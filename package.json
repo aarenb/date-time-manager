@@ -1,0 +1,18 @@
+{
+  "name": "time-date-manager",
+  "version": "1.0.0",
+  "description": "1DV610 - L2",
+  "type": "module",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "lint": "npx eslint ./src || exit 0",
+    "lint:fix": "npx eslint ./src --fix || exit 0"
+  },
+  "contributors": [
+    "Aaren Bertilsson <ab226gw@student.lnu.se>"
+  ],
+  "devDependencies": {
+    "@lnu/eslint-config": "^1.1.6"
+  }
+}
