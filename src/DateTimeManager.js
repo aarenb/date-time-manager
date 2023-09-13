@@ -82,9 +82,51 @@ export function to12HourClock (time) {
   const hh = `${time.charAt(0)}${time.charAt(1)}`
   const mm = `${time.charAt(3)}${time.charAt(4)}`
 
-  if (parseInt(hh) < 13 && parseInt(hh) > 0) {
-    console.log('wow')
+  if (parseInt(hh) < 12 && parseInt(hh) > 0) {
+    newHH = hh
+    return `${newHH}:${mm}am`
+  } else if (hh === '00') {
+    newHH = 12
+    return `${newHH}:${mm}am`
+  } else {
+    switch (hh) {
+      case '12':
+        newHH = hh
+        break
+      case '13':
+        newHH = '01'
+        break
+      case '14':
+        newHH = '02'
+        break
+      case '15':
+        newHH = '03'
+        break
+      case '16':
+        newHH = '04'
+        break
+      case '17':
+        newHH = '05'
+        break
+      case '18':
+        newHH = '06'
+        break
+      case '19':
+        newHH = '07'
+        break
+      case '20':
+        newHH = '08'
+        break
+      case '21':
+        newHH = '09'
+        break
+      case '22':
+        newHH = '10'
+        break
+      case '23':
+        newHH = '11'
+        break
+    }
+    return `${newHH}:${mm}pm`
   }
-
-  return 'time'
 }
