@@ -65,3 +65,26 @@ export function to24HourClock (time) {
     throw new TypeError('The passed argument is not a valid 12h clock timestamp.') // TODO, change error text?? + should this be just 'error'?
   }
 }
+
+/**
+ * Formats time into the 12 hour clock.
+ *
+ * @param {string} time - The time formated in the 24 hour clock (hh:mm).
+ * @returns {string} The time to format in 12 hour clock (hh:mmxm).
+ */
+export function to12HourClock (time) {
+  if (typeof time !== 'string') {
+    throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
+  }
+
+  // TODO: dublicated code, break out???
+  let newHH = ''
+  const hh = `${time.charAt(0)}${time.charAt(1)}`
+  const mm = `${time.charAt(3)}${time.charAt(4)}`
+
+  if (parseInt(hh) < 13 && parseInt(hh) > 0) {
+    console.log('wow')
+  }
+
+  return 'time'
+}
