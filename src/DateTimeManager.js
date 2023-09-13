@@ -5,27 +5,28 @@ export class DateTimeManager {
   /**
    * Formats time into the 24 hour clock.
    *
-   * @param {string} time - The time to format (hh:mm xm).
-   * @returns {string} The time formated in the 24 hour clock.
+   * @param {string} time - The time to format in 12 hour clock (hh:mmxm).
+   * @returns {string} The time formated in the 24 hour clock (hh:mm).
    */
   to24HourClock (time) {
     if (typeof time !== 'string') {
-      throw new TypeError('The passed argument is not a string.')
+      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
     }
 
     let newHH = ''
     const hh = `${time.charAt(0)}${time.charAt(1)}`
     const mm = `${time.charAt(3)}${time.charAt(4)}`
+    // TODO: add xm here
 
     if (time.charAt(5) === 'a' && time.charAt(6) === 'm') { // if am
-      if (hh === '12') {
+      if (hh === '12') { // TODO: break this out?
         newHH = '00'
       } else {
         newHH = hh
       }
       return `${newHH}:${mm}`
     } else if (time.charAt(5) === 'p' && time.charAt(6) === 'm') { // if pm
-      switch (hh) {
+      switch (hh) { // TODO: break this out?
         case '01':
           newHH = '13'
           break
@@ -63,9 +64,9 @@ export class DateTimeManager {
           newHH = '12'
           break
       }
-      return `${newHH}:${mm}`
+      return `${newHH}:${mm}` // TODO: remove dublicate??
     } else {
-      throw new TypeError('The passed argument is not a valid 12h clock timestamp.') // TODO, change error text??
+      throw new TypeError('The passed argument is not a valid 12h clock timestamp.') // TODO, change error text?? + should this be just 'error'?
     }
   }
 }
