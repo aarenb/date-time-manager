@@ -89,7 +89,7 @@ export function to12HourClock (time) {
     newHH = 12
     return `${newHH}:${mm}am`
   } else {
-    switch (hh) {
+    switch (hh) { // TODO: break this out?
       case '12':
         newHH = hh
         break
