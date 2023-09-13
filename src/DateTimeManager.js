@@ -16,16 +16,16 @@ export class DateTimeManager {
     let newHH = ''
     const hh = `${time.charAt(0)}${time.charAt(1)}`
     const mm = `${time.charAt(3)}${time.charAt(4)}`
-    // TODO: add xm here
+    const xm = `${time.charAt(5)}${time.charAt(6)}`
 
-    if (time.charAt(5) === 'a' && time.charAt(6) === 'm') { // if am
+    if (xm === 'am') {
       if (hh === '12') { // TODO: break this out?
         newHH = '00'
       } else {
         newHH = hh
       }
       return `${newHH}:${mm}`
-    } else if (time.charAt(5) === 'p' && time.charAt(6) === 'm') { // if pm
+    } else if (xm === 'pm') {
       switch (hh) { // TODO: break this out?
         case '01':
           newHH = '13'
