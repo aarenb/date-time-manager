@@ -9,9 +9,9 @@ export class Date {
   /**
    * Initializes a new instance of the Date class.
    *
-   * @param {number} year - The year (yyyy)
-   * @param {number} month - The month (mm)
-   * @param {number} day - The day (dd)
+   * @param {string} year - The year (yyyy)
+   * @param {string} month - The month (mm)
+   * @param {string} day - The day (dd)
    */
   constructor (year, month, day) {
     this.#yyyy = year
