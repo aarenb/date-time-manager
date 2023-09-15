@@ -41,7 +41,62 @@ export class Date {
       case 'yy/mm/dd':
         date = `${this.#yy}/${this.#mm}/${this.#dd}`
         break
+      case 'mm/dd/yy':
+        date = `${this.#mm}/${this.#dd}/${this.#yy}`
+        break
+      case 'mm/dd/yyyy':
+        date = `${this.#mm}/${this.#dd}/${this.#yyyy}`
+        break
     }
     return date
+  }
+
+  /**
+   * Returns the full month name.
+   *
+   * @param {string} month - The month (mm)
+   * @returns {string} The month name.
+   */
+  #getMonthName (month) {
+    let monthName = ''
+    switch (month) {
+      case '01':
+        monthName = 'January'
+        break
+      case '02':
+        monthName = 'February'
+        break
+      case '03':
+        monthName = 'March'
+        break
+      case '04':
+        monthName = 'April'
+        break
+      case '05':
+        monthName = 'May'
+        break
+      case '06':
+        monthName = 'June'
+        break
+      case '07':
+        monthName = 'July'
+        break
+      case '08':
+        monthName = 'August'
+        break
+      case '09':
+        monthName = 'September'
+        break
+      case '10':
+        monthName = 'October'
+        break
+      case '11':
+        monthName = 'November'
+        break
+      case '12':
+        monthName = 'December'
+        break
+    }
+    return monthName
   }
 }
