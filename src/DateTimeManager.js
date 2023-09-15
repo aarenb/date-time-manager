@@ -130,15 +130,3 @@ export function to12HourClock (time) {
     return `${newHH}:${mm}pm`
   }
 }
-
-// What if you make a date object and then are able to get different formats from the date object??
-/**
- * Format a certain date.
- *
- * @param {string} date - The date to format (mm/dd/yy)
- * @param {string} format - The format you want it in (ex.dd/mm/yy)
- * @returns {string} The formated date.
- */
-export function formatDate (date, format) {
-  return 'date'
-}
