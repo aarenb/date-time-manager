@@ -5,6 +5,7 @@ export class Date {
   #yyyy
   #yy
   #mm
+  #month
   #dd
   /**
    * Initializes a new instance of the Date class.
@@ -17,6 +18,7 @@ export class Date {
     this.#yyyy = year
     this.#yy = `${year.charAt(2)}${year.charAt(3)}`
     this.#mm = month
+    this.#month = this.#getMonthName(month)
     this.#dd = day
   }
 
@@ -46,6 +48,9 @@ export class Date {
         break
       case 'mm/dd/yyyy':
         date = `${this.#mm}/${this.#dd}/${this.#yyyy}`
+        break
+      case 'dd month yyyy':
+        date = `${this.#dd} ${this.#month} ${this.#yyyy}`
         break
     }
     return date
