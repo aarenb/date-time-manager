@@ -66,10 +66,15 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addTime (years, months, days) {
-    // check what each param is
-    // make the year/month/date into numbers in date and then add the new ones onto this
-    // somehow loop through so that if days become over a certain amount (like 30), another month is added instead (have to know if it's a leap year!)
-    // if month = 13, year++
+    let currentYear = Number(this.#yyyy)
+    let currentMonth = Number(this.#mm)
+    let currentDay = Number(this.#dd)
+
+    // currentYear += years
+    // currentMonth += months -> if currentMonth > 12, currentYear++ (what happens if there's more than 24 months here, it would only add one year?? probs have to loop through it and add 1 month at a time to fix this)
+    // currentDay += days (altho this you def have to loop through, to check if it's over the max days in that month, if it is then add another month, and then keep adding days but now have to check the max days in the new month)
+
+    // Maybe start with days, then months, then years??
   }
 
   /**
