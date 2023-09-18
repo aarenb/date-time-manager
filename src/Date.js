@@ -57,6 +57,17 @@ export class Date {
   }
 
   /**
+   * Add a certain amount of time to the date.
+   *
+   * @param {number} years - The amount of years to add.
+   * @param {number} months - The amount of months to add.
+   * @param {number} days - The amount of days to add.
+   */
+  addTime (years, months, days) {
+
+  }
+
+  /**
    * Returns the full month name.
    *
    * @param {string} month - The month (mm)
