@@ -15,6 +15,7 @@ export class Date {
    * @param {string} day - The day (dd)
    */
   constructor (year, month, day) {
+    // TODO: Add error handling!
     this.#yyyy = year
     this.#yy = `${year.charAt(2)}${year.charAt(3)}`
     this.#mm = month
@@ -29,6 +30,7 @@ export class Date {
    * @returns {string} The formated date.
    */
   getFormatedDate (format) {
+    // TODO: Add error handling!!
     let date = ''
     switch (format) {
       case 'dd/mm/yyyy':
@@ -64,7 +66,10 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addTime (years, months, days) {
-
+    // check what each param is
+    // make the year/month/date into numbers in date and then add the new ones onto this
+    // somehow loop through so that if days become over a certain amount (like 30), another month is added instead (have to know if it's a leap year!)
+    // if month = 13, year++
   }
 
   /**
