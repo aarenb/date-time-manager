@@ -14,7 +14,7 @@ export class Date {
    */
   constructor (year, month, day) {
     // TODO: Add error handling!
-    this.#yyyy = yea
+    this.#yyyy = year
     this.#mm = month
     this.#dd = day
   }
@@ -65,6 +65,7 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addTime (years, months, days) {
+    // TODO: Add error handling!!
     let currentYear = Number(this.#yyyy)
     let currentMonth = Number(this.#mm) // TODO: remember to add the 0 in the front later when turning this back into a string!!!
     let currentDay = Number(this.#dd)
@@ -159,9 +160,16 @@ export class Date {
 
     this.#yyyy = currentYear.toString()
 
-    // TODO: have to make sure these 2 are always 2 characters, so add 0 to some
-    this.#mm = currentMonth.toString()
-    this.#dd = currentDay.toString()
+    if (currentMonth < 10) {
+      this.#mm = `0${currentMonth.toString()}`
+    } else {
+      this.#mm = currentMonth.toString()
+    }
+    if (currentDay < 10) {
+      this.#dd = `0${currentDay.toString()}`
+    } else {
+      this.#dd = currentDay.toString()
+    }
   }
 
   /**
