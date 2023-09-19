@@ -3,9 +3,7 @@
  */
 export class Date {
   #yyyy
-  #yy
   #mm
-  #month
   #dd
   /**
    * Initializes a new instance of the Date class.
@@ -16,10 +14,8 @@ export class Date {
    */
   constructor (year, month, day) {
     // TODO: Add error handling!
-    this.#yyyy = year
-    this.#yy = `${year.charAt(2)}${year.charAt(3)}`
+    this.#yyyy = yea
     this.#mm = month
-    this.#month = this.#getMonthName(month)
     this.#dd = day
   }
 
@@ -30,6 +26,9 @@ export class Date {
    * @returns {string} The formated date.
    */
   getFormatedDate (format) {
+    const yy = `${this.#yyyy.charAt(2)}${this.#yyyy.charAt(3)}`
+    const month = this.#getMonthName(this.#mm)
+
     // TODO: Add error handling!!
     let date = ''
     switch (format) {
