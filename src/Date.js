@@ -67,7 +67,7 @@ export class Date {
    */
   addTime (years, months, days) {
     let currentYear = Number(this.#yyyy)
-    let currentMonth = Number(this.#mm)
+    let currentMonth = Number(this.#mm) // TODO: remember to add the 0 in the front later when turning this back into a string!!!
     let currentDay = Number(this.#dd)
 
     for (let i = 0; i < days; i++) {
@@ -145,6 +145,14 @@ export class Date {
             currentDay = currentDay - 31
           }
           break
+      }
+    }
+
+    for (let i = 0; i < months; i++) {
+      currentMonth++
+      if (currentMonth > 12) {
+        currentYear++
+        currentMonth = currentMonth - 12
       }
     }
 
