@@ -46,6 +46,7 @@ export class Time {
    */
   get24HourClock () {
     return this.#twentyFourH
+  }
 
   /**
    * Formats time into the 24 hour clock.
