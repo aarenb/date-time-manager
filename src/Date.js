@@ -70,6 +70,84 @@ export class Date {
     let currentMonth = Number(this.#mm)
     let currentDay = Number(this.#dd)
 
+    for (let i = 0; i < days; i++) {
+      currentDay++
+      switch (currentMonth) {
+        case 1:
+          if (currentDay > 31) { // TODO: break this out?? make more dry
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 2: // TODO: check if it's a leap year
+          if (currentDay > 28) {
+            currentMonth++
+            currentDay = currentDay - 28
+          }
+          break
+        case 3:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 4:
+          if (currentDay > 30) {
+            currentMonth++
+            currentDay = currentDay - 30
+          }
+          break
+        case 5:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 6:
+          if (currentDay > 30) {
+            currentMonth++
+            currentDay = currentDay - 30
+          }
+          break
+        case 7:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 8:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 9:
+          if (currentDay > 30) {
+            currentMonth++
+            currentDay = currentDay - 30
+          }
+          break
+        case 10:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+        case 11:
+          if (currentDay > 30) {
+            currentMonth++
+            currentDay = currentDay - 30
+          }
+          break
+        case 12:
+          if (currentDay > 31) {
+            currentMonth++
+            currentDay = currentDay - 31
+          }
+          break
+      }
+    }
+
     // currentYear += years
     // currentMonth += months -> if currentMonth > 12, currentYear++ (what happens if there's more than 24 months here, it would only add one year?? probs have to loop through it and add 1 month at a time to fix this)
     // currentDay += days (altho this you def have to loop through, to check if it's over the max days in that month, if it is then add another month, and then keep adding days but now have to check the max days in the new month)
