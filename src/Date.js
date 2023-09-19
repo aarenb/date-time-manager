@@ -36,22 +36,22 @@ export class Date {
         date = `${this.#dd}/${this.#mm}/${this.#yyyy}`
         break
       case 'dd/mm/yy':
-        date = `${this.#dd}/${this.#mm}/${this.#yy}`
+        date = `${this.#dd}/${this.#mm}/${yy}`
         break
       case 'yyyy/mm/dd':
         date = `${this.#yyyy}/${this.#mm}/${this.#dd}`
         break
       case 'yy/mm/dd':
-        date = `${this.#yy}/${this.#mm}/${this.#dd}`
+        date = `${yy}/${this.#mm}/${this.#dd}`
         break
       case 'mm/dd/yy':
-        date = `${this.#mm}/${this.#dd}/${this.#yy}`
+        date = `${this.#mm}/${this.#dd}/${yy}`
         break
       case 'mm/dd/yyyy':
         date = `${this.#mm}/${this.#dd}/${this.#yyyy}`
         break
       case 'dd month yyyy':
-        date = `${this.#dd} ${this.#month} ${this.#yyyy}`
+        date = `${this.#dd} ${month} ${this.#yyyy}`
         break
     }
     return date
