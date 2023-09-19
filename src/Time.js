@@ -31,6 +31,23 @@ export class Time {
   }
 
   /**
+   * Returns the time in 12h clock format.
+   *
+   * @returns {string} The time in 12h clock format (hh:mmxm).
+   */
+  get12HourClock () {
+    return this.#twelveH
+  }
+
+  /**
+   * Returns the time in 24h clock format.
+   *
+   * @returns {string} The time in 24h clock format (hh:mm).
+   */
+  get24HourClock () {
+    return this.#twentyFourH
+
+  /**
    * Formats time into the 24 hour clock.
    *
    * @param {string} time - The time to format in 12 hour clock (hh:mmxm).
