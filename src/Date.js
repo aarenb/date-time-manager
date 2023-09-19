@@ -146,7 +146,7 @@ export class Date {
           }
           break
       }
-    }
+    } // TODO: should probs also check if months > 12 here, in case no months are added but a bunch of days that makes months go over 12
 
     for (let i = 0; i < months; i++) {
       currentMonth++
@@ -156,11 +156,13 @@ export class Date {
       }
     }
 
-    // currentYear += years
-    // currentMonth += months -> if currentMonth > 12, currentYear++ (what happens if there's more than 24 months here, it would only add one year?? probs have to loop through it and add 1 month at a time to fix this)
-    // currentDay += days (altho this you def have to loop through, to check if it's over the max days in that month, if it is then add another month, and then keep adding days but now have to check the max days in the new month)
+    currentYear += years
 
-    // Maybe start with days, then months, then years??
+    this.#yyyy = currentYear.toString()
+
+    // TODO: have to make sure these 2 are always 2 characters, so add 0 to some
+    this.#mm = currentMonth.toString()
+    this.#dd = currentDay.toString()
   }
 
   /**
