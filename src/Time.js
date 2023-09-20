@@ -73,6 +73,16 @@ export class Time {
         currentHours = currentHours - 24
       }
     }
+
+    if (currentHours < 10) {
+      currentHours = `0${currentHours.toString()}`
+    }
+    if (currentMinutes < 10) {
+      currentHours = `0${currentMinutes.toString()}`
+    }
+
+    this.#twentyFourH = `${currentHours}:${currentMinutes}`
+    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
   }
 
   /**
