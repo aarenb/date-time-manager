@@ -49,6 +49,33 @@ export class Time {
   }
 
   /**
+   * Add a certain amount of time to the time object.
+   *
+   * @param {number} hours - The amount of hours to add.
+   * @param {number} minutes - The amount of minutes to add.
+   */
+  addTime (hours, minutes) {
+    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
+    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
+
+    for (let i = 0; i < minutes; i++) {
+      currentMinutes++
+      if (currentMinutes > 59) {
+        currentHours++
+        currentMinutes = currentMinutes - 59
+        // TODO: Also check if currentHours is over 23 here???
+      }
+    }
+
+    for (let i = 0; i < hours; i++) {
+      currentHours++
+      if (currentHours > 23) {
+        currentHours = currentHours - 24
+      }
+    }
+  }
+
+  /**
    * Formats time into the 24 hour clock.
    *
    * @param {string} time - The time to format in 12 hour clock (hh:mmxm).
