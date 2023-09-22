@@ -55,6 +55,13 @@ export class Time {
    * @param {number} minutes - The amount of minutes to add.
    */
   addTime (hours, minutes) {
+    if (typeof hours !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+    if (typeof minutes !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
     let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
 
@@ -92,10 +99,6 @@ export class Time {
    * @returns {string} The time formated in the 24 hour clock (hh:mm).
    */
   #to24HourClock (time) {
-    if (typeof time !== 'string') {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
-
     let newHH = ''
     const hh = `${time.charAt(0)}${time.charAt(1)}`
     const mm = `${time.charAt(3)}${time.charAt(4)}`
@@ -160,11 +163,8 @@ export class Time {
    * @returns {string} The time to format in 12 hour clock (hh:mmxm).
    */
   #to12HourClock (time) {
-    if (typeof time !== 'string') {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
-
     // TODO: dublicated code, break out???
+    // TODO: Check if hh and mm are correct????
     let newHH = ''
     const hh = `${time.charAt(0)}${time.charAt(1)}`
     const mm = `${time.charAt(3)}${time.charAt(4)}`

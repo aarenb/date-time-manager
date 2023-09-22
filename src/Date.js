@@ -13,7 +13,9 @@ export class Date {
    * @param {string} day - The day (dd)
    */
   constructor (year, month, day) {
-    // TODO: Add error handling!
+    if ((typeof year !== 'string') || (typeof month !== 'string') || (typeof day !== 'string')) {
+      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
+    }
     this.#yyyy = year
     this.#mm = month
     this.#dd = day
@@ -26,10 +28,13 @@ export class Date {
    * @returns {string} The formated date.
    */
   getFormatedDate (format) {
+    if (typeof format !== 'string') {
+      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
+    }
+
     const yy = `${this.#yyyy.charAt(2)}${this.#yyyy.charAt(3)}`
     const month = this.#getMonthName(this.#mm)
 
-    // TODO: Add error handling!!
     let date = ''
     switch (format) {
       case 'dd/mm/yyyy':
@@ -53,6 +58,8 @@ export class Date {
       case 'dd month yyyy':
         date = `${this.#dd} ${month} ${this.#yyyy}`
         break
+      default:
+        throw new TypeError('The passed argument is not a valid date format')
     }
     return date
   }
@@ -65,9 +72,12 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addTime (years, months, days) {
-    // TODO: Add error handling!!
+    if (typeof years !== 'number' || typeof months !== 'number' || typeof days !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentYear = Number(this.#yyyy)
-    let currentMonth = Number(this.#mm) // TODO: remember to add the 0 in the front later when turning this back into a string!!!
+    let currentMonth = Number(this.#mm)
     let currentDay = Number(this.#dd)
 
     for (let i = 0; i < days; i++) {
