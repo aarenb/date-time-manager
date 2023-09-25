@@ -27,6 +27,11 @@ describe('addTime', () => {
     testTime.addTime(10, 3)
     expect(testTime.get24HourClock()).toBe('01:48')
   })
+
+  test('0, 0 should result in 01:48am', () => {
+    testTime.addTime(0, 0)
+    expect(testTime.get12HourClock()).toBe('01:48am')
+  })
 })
 
 describe('removeTime', () => {
@@ -43,5 +48,10 @@ describe('removeTime', () => {
   test('11, 48 should result in 09:00', () => {
     testTime.removeTime(11, 48)
     expect(testTime.get24HourClock()).toBe('09:00')
+  })
+
+  test('0, 0 should result in 09:00am', () => {
+    testTime.addTime(0, 0)
+    expect(testTime.get12HourClock()).toBe('09:00am')
   })
 })
