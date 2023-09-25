@@ -1,4 +1,3 @@
-import { Time } from '../src/Time.js'
 import { Date } from '../src/Date.js'
 
 const date1 = new Date('2003', '07', '11')

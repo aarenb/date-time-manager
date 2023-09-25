@@ -11,3 +11,10 @@ describe('Get formated time', () => {
     expect(testTime.get24HourClock()).toBe('13:45')
   })
 })
+
+describe('addTime', () => {
+  test('1, 0 should result in 14:45', () => {
+    testTime.addTime(1, 0)
+    expect(testTime.get24HourClock()).toBe('14:45')
+  })
+})

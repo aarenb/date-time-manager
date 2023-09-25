@@ -278,7 +278,7 @@ export class Date {
 
     for (let i = 0; i < months; i++) {
       currentMonth--
-      if (currentMonth < 1 ) {
+      if (currentMonth < 1) {
         currentYear--
         currentMonth = 1
       }
