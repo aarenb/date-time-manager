@@ -183,6 +183,126 @@ export class Date {
   }
 
   /**
+   * Removes a certain amount of time to the date.
+   *
+   * @param {number} years - The amount of years to remove.
+   * @param {number} months - The amount of months to remove.
+   * @param {number} days - The amount of days to remove.
+   */
+  removeTime (years, months, days) {
+    if (typeof years !== 'number' || typeof months !== 'number' || typeof days !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
+    let currentYear = Number(this.#yyyy)
+    let currentMonth = Number(this.#mm)
+    let currentDay = Number(this.#dd)
+
+    for (let i = 0; i < days; i++) {
+      currentDay--
+      switch (currentMonth) {
+        case 1:
+          if (currentDay < 1) { // TODO: break this out?? make more dry
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 2: // TODO: check if it's a leap year
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 3:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 28
+          }
+          break
+        case 4:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 5:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 30
+          }
+          break
+        case 6:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 7:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 30
+          }
+          break
+        case 8:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 9:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 10:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 30
+          }
+          break
+        case 11:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 31
+          }
+          break
+        case 12:
+          if (currentDay < 1) {
+            currentMonth--
+            currentDay = 30
+          }
+          break
+      }
+    } // TODO: should probs also check if months > 12 here, in case no months are added but a bunch of days that makes months go over 12
+
+    for (let i = 0; i < months; i++) {
+      currentMonth--
+      if (currentMonth < 1 ) {
+        currentYear--
+        currentMonth = 1
+      }
+    }
+
+    currentYear -= years
+
+    // TODO: Break this out, same as in addTime:
+    this.#yyyy = currentYear.toString()
+
+    if (currentMonth < 10) {
+      this.#mm = `0${currentMonth.toString()}`
+    } else {
+      this.#mm = currentMonth.toString()
+    }
+    if (currentDay < 10) {
+      this.#dd = `0${currentDay.toString()}`
+    } else {
+      this.#dd = currentDay.toString()
+    }
+  }
+  }
+
+  /**
    * Returns the full month name.
    *
    * @param {string} month - The month (mm)
