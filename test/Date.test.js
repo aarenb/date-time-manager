@@ -31,3 +31,20 @@ describe('getFormatedDate', () => {
     expect(testDate.getFormatedDate('dd month yyyy')).toBe('11 July 2003')
   })
 })
+
+describe('addTime', () => {
+  test('1, 0, 0 should result in 11/07/2004', () => {
+    testDate.addTime(1, 0, 0)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2004')
+  })
+
+  test('0, 7, 0 should result in 11/02/2005', () => {
+    testDate.addTime(0, 7, 0)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/02/2005')
+  })
+
+  test('0, 0, 22 should result in 02/08/2005', () => {
+    testDate.addTime(0, 0, 22)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('02/08/2005')
+  })
+})
