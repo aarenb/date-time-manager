@@ -40,8 +40,8 @@ describe('removeTime', () => {
     expect(testTime.get24HourClock()).toBe('20:48')
   })
 
-  test('11, 15 should result in 09:33', () => {
-    testTime.removeTime(11, 15)
-    expect(testTime.get24HourClock()).toBe('09:33')
+  test('11, 48 should result in 09:00', () => {
+    testTime.removeTime(11, 48)
+    expect(testTime.get24HourClock()).toBe('09:00')
   })
 })

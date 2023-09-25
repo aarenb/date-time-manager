@@ -105,10 +105,9 @@ export class Time {
 
     for (let i = 0; i < minutes; i++) {
       currentMinutes--
-      if (currentMinutes < 1) {
+      if (currentMinutes < 0) {
         currentHours--
         currentMinutes = 59
-        // TODO: Also check if currentHours is under 1 here???
       }
     }
 
@@ -123,7 +122,7 @@ export class Time {
       currentHours = `0${currentHours.toString()}`
     }
     if (currentMinutes < 10) {
-      currentHours = `0${currentMinutes.toString()}`
+      currentMinutes = `0${currentMinutes.toString()}`
     }
 
     this.#twentyFourH = `${currentHours}:${currentMinutes}`
