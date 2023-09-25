@@ -43,8 +43,13 @@ describe('addTime', () => {
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/02/2005')
   })
 
-  test('0, 0, 22 should result in 02/08/2005', () => {
+  test('0, 0, 22 should result in 05/03/2005', () => {
     testDate.addTime(0, 0, 22)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('05/03/2005')
+  })
+
+  test('5, 2, 26 should result in 31/05/2010', () => {
+    testDate.addTime(5, 2, 26)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/05/2010')
   })
 })
