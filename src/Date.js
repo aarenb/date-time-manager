@@ -198,6 +198,8 @@ export class Date {
     let currentMonth = Number(this.#mm)
     let currentDay = Number(this.#dd)
 
+    // TODO: Fix so that you for example can't remove time to get a date that doesn't exist, for example 30/02/2007
+
     for (let i = 0; i < days; i++) {
       currentDay--
       switch (currentMonth) {
