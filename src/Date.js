@@ -86,73 +86,73 @@ export class Date {
         case 1:
           if (currentDay > 31) { // TODO: break this out?? make more dry
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 2: // TODO: check if it's a leap year
           if (currentDay > 28) {
             currentMonth++
-            currentDay = currentDay - 28
+            currentDay = 1
           }
           break
         case 3:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 4:
           if (currentDay > 30) {
             currentMonth++
-            currentDay = currentDay - 30
+            currentDay = 1
           }
           break
         case 5:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 6:
           if (currentDay > 30) {
             currentMonth++
-            currentDay = currentDay - 30
+            currentDay = 1
           }
           break
         case 7:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 8:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 9:
           if (currentDay > 30) {
             currentMonth++
-            currentDay = currentDay - 30
+            currentDay = 1
           }
           break
         case 10:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
         case 11:
           if (currentDay > 30) {
             currentMonth++
-            currentDay = currentDay - 30
+            currentDay = 1
           }
           break
         case 12:
           if (currentDay > 31) {
             currentMonth++
-            currentDay = currentDay - 31
+            currentDay = 1
           }
           break
       }
