@@ -82,7 +82,7 @@ export class Time {
       currentHours = `0${currentHours.toString()}`
     }
     if (currentMinutes < 10) {
-      currentHours = `0${currentMinutes.toString()}`
+      currentMinutes = `0${currentMinutes.toString()}`
     }
 
     this.#twentyFourH = `${currentHours}:${currentMinutes}`
