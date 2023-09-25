@@ -274,7 +274,7 @@ export class Date {
           }
           break
       }
-    } // TODO: should probs also check if months > 12 here, in case no months are added but a bunch of days that makes months go over 12
+    } // TODO: should probs also check if months < 1 here, in case no months are added but a bunch of days that makes months go over 12
 
     for (let i = 0; i < months; i++) {
       currentMonth--
@@ -299,7 +299,6 @@ export class Date {
     } else {
       this.#dd = currentDay.toString()
     }
-  }
   }
 
   /**

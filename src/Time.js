@@ -55,10 +55,7 @@ export class Time {
    * @param {number} minutes - The amount of minutes to add.
    */
   addTime (hours, minutes) {
-    if (typeof hours !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
-    if (typeof minutes !== 'number') {
+    if (typeof hours !== 'number' || typeof minutes !== 'number') {
       throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
     }
 
@@ -78,6 +75,47 @@ export class Time {
       currentHours++
       if (currentHours > 23) {
         currentHours = currentHours - 24
+      }
+    }
+
+    if (currentHours < 10) {
+      currentHours = `0${currentHours.toString()}`
+    }
+    if (currentMinutes < 10) {
+      currentHours = `0${currentMinutes.toString()}`
+    }
+
+    this.#twentyFourH = `${currentHours}:${currentMinutes}`
+    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
+  }
+
+  /**
+   * Removes a certain amount of time to the time object.
+   *
+   * @param {number} hours - The amount of hours to remove.
+   * @param {number} minutes - The amount of minutes to remove.
+   */
+  removeTime (hours, minutes) {
+    if (typeof hours !== 'number' || typeof minutes !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
+    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
+    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
+
+    for (let i = 0; i < minutes; i++) {
+      currentMinutes--
+      if (currentMinutes < 1) {
+        currentHours--
+        currentMinutes = 59
+        // TODO: Also check if currentHours is under 1 here???
+      }
+    }
+
+    for (let i = 0; i < hours; i++) {
+      currentHours--
+      if (currentHours < 1) {
+        currentHours = 23
       }
     }
 
