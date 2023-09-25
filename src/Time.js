@@ -66,7 +66,7 @@ export class Time {
       currentMinutes++
       if (currentMinutes > 59) {
         currentHours++
-        currentMinutes = currentMinutes - 59
+        currentMinutes = 0
         // TODO: Also check if currentHours is over 23 here???
       }
     }
