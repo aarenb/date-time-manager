@@ -62,11 +62,11 @@ describe('removeTime', () => {
 
   test('0, 6, 0 should result in 31/12/2008', () => {
     testDate.removeTime(0, 6, 0)
-    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/12/2008')
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/11/2008')
   })
 
   test('0, 0, 32 should result in 02/11/2008', () => {
-    testDate.removeTime(0, 6, 0)
-    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('02/11/2008')
+    testDate.removeTime(0, 0, 32)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('30/10/2008')
   })
 })

@@ -280,7 +280,7 @@ export class Date {
       currentMonth--
       if (currentMonth < 1) {
         currentYear--
-        currentMonth = 1
+        currentMonth = 12
       }
     }
 
