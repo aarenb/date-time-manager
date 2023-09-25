@@ -114,7 +114,7 @@ export class Time {
 
     for (let i = 0; i < hours; i++) {
       currentHours--
-      if (currentHours < 1) {
+      if (currentHours < 0) {
         currentHours = 23
       }
     }
