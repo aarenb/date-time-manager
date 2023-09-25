@@ -53,3 +53,20 @@ describe('addTime', () => {
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/05/2010')
   })
 })
+
+describe('removeTime', () => {
+  test('1, 0, 0 should result in 31/05/2009', () => {
+    testDate.removeTime(1, 0, 0)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/05/2009')
+  })
+
+  test('0, 6, 0 should result in 31/12/2008', () => {
+    testDate.removeTime(0, 6, 0)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('31/12/2008')
+  })
+
+  test('0, 0, 32 should result in 02/11/2008', () => {
+    testDate.removeTime(0, 6, 0)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('02/11/2008')
+  })
+})

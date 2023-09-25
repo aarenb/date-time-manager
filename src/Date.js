@@ -207,7 +207,7 @@ export class Date {
             currentDay = 31
           }
           break
-        case 2: // TODO: check if it's a leap year
+        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
           if (currentDay < 1) {
             currentMonth--
             currentDay = 31
