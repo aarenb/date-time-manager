@@ -1,9 +1,9 @@
 {
   "name": "time-date-manager",
   "version": "1.0.0",
-  "description": "1DV610 - L2",
+  "description": "A simple time & date manager",
   "type": "module",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0",
