@@ -89,7 +89,7 @@ export class Date {
             currentDay = 1
           }
           break
-        case 2: // TODO: check if it's a leap year
+        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
           if (currentDay > 28) {
             currentMonth++
             currentDay = 1
@@ -156,7 +156,7 @@ export class Date {
           }
           break
       }
-    } // TODO: should probs also check if months > 12 here, in case no months are added but a bunch of days that makes months go over 12
+    }
 
     for (let i = 0; i < months; i++) {
       currentMonth++
@@ -198,7 +198,7 @@ export class Date {
     let currentMonth = Number(this.#mm)
     let currentDay = Number(this.#dd)
 
-    // TODO: Fix so that you for example can't remove time to get a date that doesn't exist, for example 30/02/2007
+    // TODO: Fix so that you can't remove time to get a date that doesn't exist, for example 30/02/2007
 
     for (let i = 0; i < days; i++) {
       currentDay--
@@ -276,7 +276,7 @@ export class Date {
           }
           break
       }
-    } // TODO: should probs also check if months < 1 here, in case no months are added but a bunch of days that makes months go over 12
+    }
 
     for (let i = 0; i < months; i++) {
       currentMonth--

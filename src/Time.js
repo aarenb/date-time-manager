@@ -26,7 +26,7 @@ export class Time {
       this.#twentyFourH = time
       this.#twelveH = this.#to12HourClock(time)
     } else {
-      throw new TypeError('The passed argument is not a valid format, it should be 12 or 24.') // TODO, change error text?? + should this be just 'error'?
+      throw new TypeError('The passed argument is not a valid format, it should be 12 or 24.')
     }
   }
 
@@ -67,7 +67,6 @@ export class Time {
       if (currentMinutes > 59) {
         currentHours++
         currentMinutes = 0
-        // TODO: Also check if currentHours is over 23 here???
       }
     }
 
@@ -187,9 +186,9 @@ export class Time {
           newHH = '12'
           break
       }
-      return `${newHH}:${mm}` // TODO: remove dublicate??
+      return `${newHH}:${mm}`
     } else {
-      throw new TypeError('The passed argument is not a valid 12h clock timestamp.') // TODO, change error text?? + should this be just 'error'?
+      throw new TypeError('The passed argument is not a valid 12h clock timestamp.')
     }
   }
 
