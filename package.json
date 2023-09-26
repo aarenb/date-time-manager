@@ -1,6 +1,6 @@
 {
   "name": "time-date-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple time & date manager",
   "git repository": "https://github.com/aarenb/date-time-manager",
   "type": "module",
