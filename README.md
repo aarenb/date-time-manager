@@ -34,6 +34,16 @@ All supported date formats:
 'mm/dd/yyyy' => '07/11/2003'
 'dd month yyyy' => '11 July 2003'
 ```
+Add time to the date
+```
+theDate.addTime(1, 2, 3)
+// + 1 year, 2 months, 3 days
+```
+Remove time from the date
+```
+theDate.removeTime(1, 2, 3)
+// - 1 year, 2 months, 3 days
+```
 --------
 ### Time
 To create a new time object, input the time as a string and in which format the time is (24 for 24h clock or 12 for 12h clock)  
