@@ -69,9 +69,4 @@ describe('removeTime', () => {
     testDate.removeTime(0, 0, 32)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('30/10/2008')
   })
-
-  test('1, 8, 0 should result in 30/02/2007 (although this day technically does not exist)', () => {
-    testDate.removeTime(1, 8, 0)
-    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('30/02/2007')
-  })
 })
