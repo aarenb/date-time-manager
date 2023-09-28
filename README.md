@@ -1,6 +1,6 @@
 # date-time-manager
 
-This module can be used by other programmers to handel date and time in their applications. It can for example be used to build calendar apps and project planning tools.
+This module can be used by other programmers to handle date and time in their applications. It can for example be used to build calendar apps and project planning tools.
 
 ## Install
 Install using npm:
@@ -72,3 +72,6 @@ Remove time from the time object
 theTime.removeTime(2, 30)
 // - 2 hours, 30 minutes
 ```
+
+## For developers
+[You can find more info for developers who wants to work with the code here](developer.md)
