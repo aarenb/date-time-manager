@@ -218,7 +218,9 @@ Vissa delar i denna koden är likadana som i Time’s addTime metod, och hade d�
    </td>
   </tr>
 </table>
-  
-I boken beskrivs det hur switch statements generellt är dåliga då de ofta gör mer än en sak, och det även inte går att skriva korta switch statements. 
-Jag håller inte riktigt med om att man för det mesta inte borde använda dessa, då de enligt mig gör koden betydligt tydligare att läsa än om man använder t.ex. flera if-statements istället. 
-Jatg håller med om att koden blir väldigt lång när man använder switch stements, vilket inte är så vidare bra, men det känns ändå som att det är enklare att förstå den. I vissa fall tror jag till och med flera if-statements kan se större ut än om man bara använder en switch statement.
+
+I Clean Code beskrivs det hur switch statements generellt är dåliga då de ofta gör mer än en sak, och det även inte går att skriva korta switch statements. Jag håller inte riktigt med om att man för det mesta inte borde använda dessa, då de enligt mig gör koden betydligt tydligare att läsa än om man använder t.ex. flera if-statements istället. Jag håller med om att koden blir väldigt lång när man använder switch statements, vilket inte är så vidare bra, men det känns ändå som att det är enklare att förstå den. I vissa fall tror jag till och med flera if-statements kan se större ut än om man bara använder en switch statement.
+
+En av de första sakerna jag lärde mig när jag började programmera var att bryta ut kod för att undvika upprepning. Det kan ses som jobbigt ibland, och tar definitivt en hel del tid, men att göra koden så “dry” som möjligt är enligt mig den absolut viktigaste delen för kodkvaliteten. Detta gör koden enklare att läsa och förstå då den blir kortare, och det hjälper även programmeraren som kan kalla en metod istället för att behöva kopiera massa kod. Som Robert C. Martin själv säger: “Duplication may be the root of all evil in software.”
+
+## Allmän reflektion
