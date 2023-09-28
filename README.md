@@ -72,3 +72,6 @@ Remove time from the time object
 theTime.removeTime(2, 30)
 // - 2 hours, 30 minutes
 ```
+
+## For developers
+[You can find more info for developers who wants to work with the code here](developer.md)
