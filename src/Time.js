@@ -89,7 +89,7 @@ export class Time {
   }
 
   /**
-   * Removes a certain amount of time to the time object.
+   * Removes a certain amount of time from the time object.
    *
    * @param {number} hours - The amount of hours to remove.
    * @param {number} minutes - The amount of minutes to remove.
