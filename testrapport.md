@@ -1,3 +1,5 @@
+# Test report
+
 To run the automatic tests, do the following commands:
 1. npm i
 2. npm run test
