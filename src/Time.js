@@ -195,8 +195,8 @@ export class Time {
   /**
    * Formats time into the 12 hour clock.
    *
-   * @param {string} time - The time formated in the 24 hour clock (hh:mm).
-   * @returns {string} The time to format in 12 hour clock (hh:mmxm).
+   * @param {string} time - The time to format in the 24 hour clock (hh:mm).
+   * @returns {string} The time formatted in 12 hour clock (hh:mmxm).
    */
   #to12HourClock (time) {
     // TODO: dublicated code, break out???
