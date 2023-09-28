@@ -65,7 +65,7 @@ export class Date {
   }
 
   /**
-   * Add a certain amount of time to the date.
+   * Adds a certain amount of time to the date.
    *
    * @param {number} years - The amount of years to add.
    * @param {number} months - The amount of months to add.
