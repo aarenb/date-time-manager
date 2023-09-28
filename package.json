@@ -2,7 +2,6 @@
   "name": "time-date-manager",
   "version": "1.0.2",
   "description": "A simple time & date manager",
-  "git repository": "https://github.com/aarenb/date-time-manager",
   "type": "module",
   "main": "src/index.js",
   "scripts": {
@@ -18,5 +17,9 @@
     "jest": "^29.7.0",
     "jest-chain": "^1.1.5",
     "jest-extended": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aarenb/date-time-manager"
   }
 }
