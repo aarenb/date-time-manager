@@ -75,6 +75,148 @@ För att ett namn verkligen ska följa "use intention-revealing names" kan de ib
 
 
 ## Funktioner (Kapitel 3)
+(Samtliga metoder finns att hitta i Date.js/Time.js)
+<table>
+  <tr>
+   <td>Metodnamn (och JSDOC)
+   </td>
+   <td>Antal rader
+   </td>
+   <td>Reflektion och regler från Clean Code
+   </td>
+  </tr>
+  <tr>
+   <td>/**
+<p>
+* Adds a certain amount of time to the date.
+<p>
+*
+<p>
+* @param {number} years - The amount of years to add.
+<p>
+* @param {number} months - The amount of months to add.
+<p>
+* @param {number} days - The amount of days to add.
+<p>
+*/
+<p>
+<strong>addTime(years, months, days)</strong>
+   </td>
+   <td>109
+   </td>
+   <td><strong>Small!</strong>
+<p>
+Detta är en ganska lång metod, och det finns definitivt möjligheter till att bryta ut vissa delar till sina egna metoder så att denna blir kortare (och mer <strong>dry</strong>).
+<p>
+<strong>Function Arguments</strong>
+<p>
+Metoden har tre arguments (<strong>triad</strong>). 
+<p>
+<strong>Argument objects</strong>
+<p>
+Man hade möjligen kunnat ändra så att användaren istället skickar in ett Date objekt som innehåller tiden som skall läggas till, så att det blir mindre argument att hålla koll på.
+   </td>
+  </tr>
+  <tr>
+   <td>/**<br>* Formats time into the 24 hour clock.
+<p>
+*
+<p>
+* @param {string} time - The time to format in 12 hour clock (hh:mmxm)
+<p>
+* @returns {string}The time formatted in the 24 hour clock (hh:mm)
+<p>
+*/
+<p>
+<strong>#to24HourClock(time)</strong>
+   </td>
+   <td>56
+   </td>
+   <td><strong>Function Arguments</strong>
+<p>
+Metoden har ett argument (<strong>monadic</strong>)
+<p>
+<strong>Prefer Exceptions to Returning Error Codes</strong>
+<p>
+Metoden throws TypeError (en exception) om argumentet inte är i rätt format.
+   </td>
+  </tr>
+  <tr>
+   <td>/**
+<p>
+* Formats time into the 12 hour clock.
+<p>
+*
+<p>
+* @param {string} time - The time to format in the 24 hour clock (hh:mm)
+<p>
+* @returns {string} The time formatted in 12 hour clock (hh:mmxm)
+<p>
+<strong>#to12HourClock(time)</strong>
+   </td>
+   <td>54
+   </td>
+   <td><strong>Don’t Repeat Yourself</strong>
+<p>
+Första delen i denna metoden är exakt samma som i to24HourClock, denna hade kunnat brytas ut till en egen metod så att koden blir mindre upprepande.
+   </td>
+  </tr>
+  <tr>
+   <td>/**<br>* Returns the date in a certain format
+<p>
+*
+<p>
+* @param {string} format - The format to return the date in, (ex. dd/mm/yy).
+<p>
+* @returns {string} The formatted date.
+<p>
+*/
+<p>
+<strong>getFormatedDate(format)</strong>
+   </td>
+   <td>35
+   </td>
+   <td><strong>Switch Statements</strong>
+<p>
+Metoden består främst av en switch statement, vilket är något Clean Code är väldigt emot. Hade kunnat ersätta detta med if-satser.
+<p>
+<strong>Blocks and Indenting</strong>
+<p>
+Block i olika kontrollsatser ska inte vara större än en rad, vilket switch statementen i denna metoden uppfyller (om man bortser från att varje block också har en “break”, men den delen behövs alltid.)
+<p>
+<strong>Do one thing</strong>
+<p>
+Metoden gör egentligen två saker, den formatterar datumet till ett visst format och sedan returnerar den detta. Man hade bryta ut de olika formatteringarna till sina egna metoder, men det känns onödigt i detta fallet eftersom de bara är en rad långa.
+   </td>
+  </tr>
+  <tr>
+   <td>/**
+<p>
+* Removes a certain amount of time from the time object
+<p>
+*
+<p>
+* @param {number} hours - The amount of hours to remove.
+<p>
+* @param {number} minutes - The amount of minutes to remove.
+<p>
+*/
+<p>
+<strong>removeTime(hours, minutes)</strong>
+   </td>
+   <td>32
+   </td>
+   <td><strong>Function Arguments</strong>
+<p>
+Metoden har två argument (<strong>dyadic</strong>)
+<p>
+<strong>Don’t Repeat Yourself</strong>
+<p>
+Vissa delar i denna koden är likadana som i Time’s addTime metod, och hade därför kunnat brytas ut för att undvika upprepning.
+   </td>
+  </tr>
+</table>
+  
 I boken beskrivs det hur switch statements generellt är dåliga då de ofta gör mer än en sak, och det även inte går att skriva korta switch statements. 
 Jag håller inte riktigt med om att man för det mesta inte borde använda dessa, då de enligt mig gör koden betydligt tydligare att läsa än om man använder t.ex. flera if-statements istället. 
 Jatg håller med om att koden blir väldigt lång när man använder switch stements, vilket inte är så vidare bra, men det känns ändå som att det är enklare att förstå den. I vissa fall tror jag till och med flera if-statements kan se större ut än om man bara använder en switch statement.
