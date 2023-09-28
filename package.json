@@ -1,6 +1,6 @@
 {
   "name": "time-date-manager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple time & date manager",
   "type": "module",
   "main": "src/index.js",
