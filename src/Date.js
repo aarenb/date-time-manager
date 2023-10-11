@@ -183,6 +183,33 @@ export class Date {
   }
 
   /**
+   * Adds a certain amount of months to the date.
+   *
+   * @param {number} months - The amount of months to add.
+   */
+  addMonths (months) {
+    let currentMonth = Number(this.#month)
+    let currentYear = Number(this.#fullYear)
+
+    for (let i = 0; i < months; i++) {
+      currentMonth++
+      if (currentMonth > 12) {
+        currentYear++
+        currentMonth = 1
+      }
+    }
+
+    this.#fullYear = currentYear.toString()
+
+    // TODO: Break this out?
+    if (currentMonth < 10) {
+      this.#month = `0${currentMonth.toString()}`
+    } else {
+      this.#month = currentMonth.toString()
+    }
+  }
+
+  /**
    * Adds a certain amount of years to the date.
    *
    * @param {number} years - The amount of years to add.
