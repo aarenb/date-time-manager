@@ -2,9 +2,9 @@
  * Represents a date.
  */
 export class Date {
-  #yyyy
-  #mm
-  #dd
+  #fullYear
+  #month
+  #day
   /**
    * Initializes a new instance of the Date class.
    *
@@ -16,9 +16,9 @@ export class Date {
     if ((typeof year !== 'string') || (typeof month !== 'string') || (typeof day !== 'string')) {
       throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
     }
-    this.#yyyy = year
-    this.#mm = month
-    this.#dd = day
+    this.#fullYear = year
+    this.#month = month
+    this.#day = day
   }
 
   /**
@@ -32,31 +32,31 @@ export class Date {
       throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
     }
 
-    const yy = `${this.#yyyy.charAt(2)}${this.#yyyy.charAt(3)}`
-    const month = this.#getMonthName(this.#mm)
+    const twoDigitsYear = `${this.#fullYear.charAt(2)}${this.#fullYear.charAt(3)}`
+    const monthName = this.#getMonthName(this.#month)
 
     let date = ''
     switch (format) {
       case 'dd/mm/yyyy':
-        date = `${this.#dd}/${this.#mm}/${this.#yyyy}`
+        date = `${this.#day}/${this.#month}/${this.#fullYear}`
         break
       case 'dd/mm/yy':
-        date = `${this.#dd}/${this.#mm}/${yy}`
+        date = `${this.#day}/${this.#month}/${twoDigitsYear}`
         break
       case 'yyyy/mm/dd':
-        date = `${this.#yyyy}/${this.#mm}/${this.#dd}`
+        date = `${this.#fullYear}/${this.#month}/${this.#day}`
         break
       case 'yy/mm/dd':
-        date = `${yy}/${this.#mm}/${this.#dd}`
+        date = `${twoDigitsYear}/${this.#month}/${this.#day}`
         break
       case 'mm/dd/yy':
-        date = `${this.#mm}/${this.#dd}/${yy}`
+        date = `${this.#month}/${this.#day}/${twoDigitsYear}`
         break
       case 'mm/dd/yyyy':
-        date = `${this.#mm}/${this.#dd}/${this.#yyyy}`
+        date = `${this.#month}/${this.#day}/${this.#fullYear}`
         break
       case 'dd month yyyy':
-        date = `${this.#dd} ${month} ${this.#yyyy}`
+        date = `${this.#day} ${monthName} ${this.#fullYear}`
         break
       default:
         throw new TypeError('The passed argument is not a valid date format')
@@ -76,9 +76,9 @@ export class Date {
       throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
     }
 
-    let currentYear = Number(this.#yyyy)
-    let currentMonth = Number(this.#mm)
-    let currentDay = Number(this.#dd)
+    let currentYear = Number(this.#fullYear)
+    let currentMonth = Number(this.#month)
+    let currentDay = Number(this.#day)
 
     for (let i = 0; i < days; i++) {
       currentDay++
@@ -168,17 +168,17 @@ export class Date {
 
     currentYear += years
 
-    this.#yyyy = currentYear.toString()
+    this.#fullYear = currentYear.toString()
 
     if (currentMonth < 10) {
-      this.#mm = `0${currentMonth.toString()}`
+      this.#month = `0${currentMonth.toString()}`
     } else {
-      this.#mm = currentMonth.toString()
+      this.#month = currentMonth.toString()
     }
     if (currentDay < 10) {
-      this.#dd = `0${currentDay.toString()}`
+      this.#day = `0${currentDay.toString()}`
     } else {
-      this.#dd = currentDay.toString()
+      this.#day = currentDay.toString()
     }
   }
 
@@ -194,9 +194,9 @@ export class Date {
       throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
     }
 
-    let currentYear = Number(this.#yyyy)
-    let currentMonth = Number(this.#mm)
-    let currentDay = Number(this.#dd)
+    let currentYear = Number(this.#fullYear)
+    let currentMonth = Number(this.#month)
+    let currentDay = Number(this.#day)
 
     // TODO: Fix so that you can't remove time to get a date that doesn't exist, for example 30/02/2007
 
@@ -289,17 +289,17 @@ export class Date {
     currentYear -= years
 
     // TODO: Break this out, same as in addTime:
-    this.#yyyy = currentYear.toString()
+    this.#fullYear = currentYear.toString()
 
     if (currentMonth < 10) {
-      this.#mm = `0${currentMonth.toString()}`
+      this.#month = `0${currentMonth.toString()}`
     } else {
-      this.#mm = currentMonth.toString()
+      this.#month = currentMonth.toString()
     }
     if (currentDay < 10) {
-      this.#dd = `0${currentDay.toString()}`
+      this.#day = `0${currentDay.toString()}`
     } else {
-      this.#dd = currentDay.toString()
+      this.#day = currentDay.toString()
     }
   }
 
