@@ -70,6 +70,10 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addDays (days) {
+    if (typeof days !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentDay = Number(this.#day)
 
     for (let i = 0; i < days; i++) {
@@ -163,6 +167,10 @@ export class Date {
    * @param {number} months - The amount of months to add.
    */
   addMonths (months) {
+    if (typeof months !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentMonth = Number(this.#month)
 
     for (let i = 0; i < months; i++) {
@@ -186,6 +194,10 @@ export class Date {
    * @param {number} years - The amount of years to add.
    */
   addYears (years) {
+    if (typeof years !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentYear = Number(this.#fullYear)
     currentYear += years
     this.#fullYear = currentYear.toString()
