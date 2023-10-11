@@ -183,6 +183,17 @@ export class Date {
   }
 
   /**
+   * Adds a certain amount of years to the date.
+   *
+   * @param {number} years - The amount of years to add.
+   */
+  addYears (years) {
+    let currentYear = Number(this.#fullYear)
+    currentYear += years
+    this.#fullYear = currentYear.toString()
+  }
+
+  /**
    * Removes a certain amount of time to the date.
    *
    * @param {number} years - The amount of years to remove.
