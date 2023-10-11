@@ -204,35 +204,15 @@ export class Date {
   }
 
   /**
-   * Subtracts a certain amount of months from the date.
-   *
-   * @param {number} months - The amount of months to subtract.
-   */
-  subtractMonths (months) {
-    let currentMonth = Number(this.#month)
-
-    for (let i = 0; i < months; i++) {
-      currentMonth--
-      if (currentMonth < 1) {
-        this.subtractYears(1)
-        currentMonth = 12
-      }
-    }
-
-    // TODO: Break this out??
-    if (currentMonth < 10) {
-      this.#month = `0${currentMonth.toString()}`
-    } else {
-      this.#month = currentMonth.toString()
-    }
-  }
-
-  /**
    * Subtracts a certain amount of days from the date.
    *
    * @param {number} days - The amount of days to subtract.
    */
   subtractDays (days) {
+    if (typeof years !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
     let currentDay = Number(this.#day)
 
     for (let i = 0; i < days; i++) {
@@ -319,6 +299,49 @@ export class Date {
     } else {
       this.#day = currentDay.toString()
     }
+  }
+
+  /**
+   * Subtracts a certain amount of months from the date.
+   *
+   * @param {number} months - The amount of months to subtract.
+   */
+  subtractMonths (months) {
+    if (typeof years !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
+    let currentMonth = Number(this.#month)
+
+    for (let i = 0; i < months; i++) {
+      currentMonth--
+      if (currentMonth < 1) {
+        this.subtractYears(1)
+        currentMonth = 12
+      }
+    }
+
+    // TODO: Break this out??
+    if (currentMonth < 10) {
+      this.#month = `0${currentMonth.toString()}`
+    } else {
+      this.#month = currentMonth.toString()
+    }
+  }
+
+  /**
+   * Subtracts a certain amount of years from the date.
+   *
+   * @param {number} years - The amount of years to subtarct.
+   */
+  subtractYears (years) {
+    if (typeof years !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
+    let currentYear = Number(this.#fullYear)
+    currentYear -= years
+    this.#fullYear = currentYear.toString()
   }
 
   /**
