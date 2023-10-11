@@ -340,6 +340,30 @@ export class Date {
   }
 
   /**
+   * Subtracts a certain amount of months from the date.
+   *
+   * @param {number} months - The amount of months to subtract.
+   */
+  subtractMonths (months) {
+    let currentMonth = Number(this.#month)
+
+    for (let i = 0; i < months; i++) {
+      currentMonth--
+      if (currentMonth < 1) {
+        this.subtractYears(1)
+        currentMonth = 12
+      }
+    }
+
+    // TODO: Break this out??
+    if (currentMonth < 10) {
+      this.#month = `0${currentMonth.toString()}`
+    } else {
+      this.#month = currentMonth.toString()
+    }
+  }
+
+  /**
    * Returns the full month name.
    *
    * @param {string} month - The month (mm)
