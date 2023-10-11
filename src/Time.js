@@ -89,12 +89,12 @@ export class Time {
   }
 
   /**
-   * Removes a certain amount of time from the time object.
+   * Subtracts a certain amount of time from the time object.
    *
-   * @param {number} hours - The amount of hours to remove.
-   * @param {number} minutes - The amount of minutes to remove.
+   * @param {number} hours - The amount of hours to subtract.
+   * @param {number} minutes - The amount of minutes to subtract.
    */
-  removeTime (hours, minutes) {
+  subtractTime (hours, minutes) {
     if (typeof hours !== 'number' || typeof minutes !== 'number') {
       throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
     }
