@@ -325,6 +325,21 @@ export class Date {
   }
 
   /**
+   * Subtracts a certain amount of years from the date.
+   *
+   * @param {number} years - The amount of years to subtract.
+   */
+  subtractYears (years) {
+    if (typeof years !== 'number') {
+      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
+    }
+
+    let currentYear = Number(this.#fullYear)
+    currentYear -= years
+    this.#fullYear = currentYear.toString()
+  }
+
+  /**
    * Returns the full month name.
    *
    * @param {string} month - The month (mm)
