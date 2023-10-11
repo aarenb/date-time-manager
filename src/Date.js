@@ -78,7 +78,7 @@ export class Date {
 
     for (let i = 0; i < days; i++) {
       currentDay++
-      switch (this.#month) {
+      switch (Number(this.#month)) {
         case 1:
           if (currentDay > 31) { // TODO: break this out?? make more dry
             this.addMonths(1)
@@ -360,6 +360,100 @@ export class Date {
       this.#month = `0${currentMonth.toString()}`
     } else {
       this.#month = currentMonth.toString()
+    }
+  }
+
+  /**
+   * Subtracts a certain amount of days from the date.
+   *
+   * @param {number} days - The amount of days to subtract.
+   */
+  subtractDays (days) {
+    let currentDay = Number(this.#day)
+
+    for (let i = 0; i < days; i++) {
+      currentDay--
+      switch (Number(this.#month)) {
+        case 1:
+          if (currentDay < 1) { // TODO: break this out?? make more dry
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 3:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 28
+          }
+          break
+        case 4:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 5:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 30
+          }
+          break
+        case 6:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 7:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 30
+          }
+          break
+        case 8:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 9:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 10:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 30
+          }
+          break
+        case 11:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 31
+          }
+          break
+        case 12:
+          if (currentDay < 1) {
+            this.subtractMonths(1)
+            currentDay = 30
+          }
+          break
+      }
+    }
+
+    // TODO: Break this out??
+    if (currentDay < 10) {
+      this.#day = `0${currentDay.toString()}`
+    } else {
+      this.#day = currentDay.toString()
     }
   }
 
