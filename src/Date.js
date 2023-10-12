@@ -1,3 +1,5 @@
+import { ExceptionHandler } from './ExceptionHandler'
+
 /**
  * Represents a date.
  */
@@ -5,6 +7,7 @@ export class Date {
   #fullYear
   #month
   #day
+  #exceptionHandler
   /**
    * Initializes a new instance of the Date class.
    *
@@ -13,9 +16,12 @@ export class Date {
    * @param {string} day - The day (dd)
    */
   constructor (year, month, day) {
-    if ((typeof year !== 'string') || (typeof month !== 'string') || (typeof day !== 'string')) {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
+    this.#exceptionHandler = new ExceptionHandler()
+
+    this.#exceptionHandler.guardAgainstNotString(year)
+    this.#exceptionHandler.guardAgainstNotString(month)
+    this.#exceptionHandler.guardAgainstNotString(day)
+
     this.#fullYear = year
     this.#month = month
     this.#day = day
@@ -28,9 +34,7 @@ export class Date {
    * @returns {string} The formated date.
    */
   getFormatedDate (format) {
-    if (typeof format !== 'string') {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotString(format)
 
     const twoDigitsYear = `${this.#fullYear.charAt(2)}${this.#fullYear.charAt(3)}`
     const monthName = this.#getMonthName(this.#month)
@@ -70,9 +74,7 @@ export class Date {
    * @param {number} days - The amount of days to add.
    */
   addDays (days) {
-    if (typeof days !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(days)
 
     let currentDay = Number(this.#day)
 
@@ -128,9 +130,7 @@ export class Date {
    * @param {number} months - The amount of months to add.
    */
   addMonths (months) {
-    if (typeof months !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
 
@@ -155,9 +155,7 @@ export class Date {
    * @param {number} years - The amount of years to add.
    */
   addYears (years) {
-    if (typeof years !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(years)
 
     let currentYear = Number(this.#fullYear)
     currentYear += years
@@ -170,9 +168,7 @@ export class Date {
    * @param {number} days - The amount of days to subtract.
    */
   subtractDays (days) {
-    if (typeof years !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(days)
 
     let currentDay = Number(this.#day)
 
@@ -229,9 +225,7 @@ export class Date {
    * @param {number} months - The amount of months to subtract.
    */
   subtractMonths (months) {
-    if (typeof years !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
 
@@ -257,9 +251,7 @@ export class Date {
    * @param {number} years - The amount of years to subtarct.
    */
   subtractYears (years) {
-    if (typeof years !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(years)
 
     let currentYear = Number(this.#fullYear)
     currentYear -= years
