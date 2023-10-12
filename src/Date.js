@@ -80,40 +80,22 @@ export class Date {
       currentDay++
       switch (Number(this.#month)) {
         case 1:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
-          break
-        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 29)
-          break
         case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
           currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
           break
         case 4:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 30)
-          break
-        case 5:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
-          break
         case 6:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 30)
-          break
-        case 7:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
-          break
-        case 8:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
-          break
         case 9:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 30)
-          break
-        case 10:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
-          break
         case 11:
           currentDay = this.checkIfLargerThanMaxDays(currentDay, 30)
           break
-        case 12:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
+        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
+          currentDay = this.checkIfLargerThanMaxDays(currentDay, 29)
           break
       }
     }
@@ -132,7 +114,7 @@ export class Date {
    * @param {number} maxDays - The max amount of days of the month.
    * @returns {number} - The current day after checking, possibly changed.
    */
-  checkIfLargerThanMaxDays(currentDay, maxDays) {
+  checkIfLargerThanMaxDays (currentDay, maxDays) { // TODO: Change name?
     if (currentDay > maxDays) {
       this.addMonths(1)
       currentDay = 1
