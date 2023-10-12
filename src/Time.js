@@ -1,9 +1,12 @@
+import { ExceptionHandler } from './ExceptionHandler'
+
 /**
  * Represents a certain time.
  */
 export class Time {
   #twelveH
   #twentyFourH
+  #exceptionHandler
   /**
    * Initializes a new instance of the Time class.
    *
@@ -11,13 +14,10 @@ export class Time {
    * @param {number} format - The format of the entered time (12/24)
    */
   constructor (time, format) {
-    if (typeof time !== 'string') {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
+    this.#exceptionHandler = new ExceptionHandler()
 
-    if (typeof format !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotString(time)
+    this.#exceptionHandler.guardAgainstNotNumber(format)
 
     if (format === 12) {
       this.#twelveH = time
@@ -55,9 +55,8 @@ export class Time {
    * @param {number} minutes - The amount of minutes to add.
    */
   addTime (hours, minutes) {
-    if (typeof hours !== 'number' || typeof minutes !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
     let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
     let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
@@ -95,9 +94,8 @@ export class Time {
    * @param {number} minutes - The amount of minutes to subtract.
    */
   subtractTime (hours, minutes) {
-    if (typeof hours !== 'number' || typeof minutes !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
     let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
     let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
