@@ -180,76 +180,22 @@ export class Date {
       currentDay--
       switch (Number(this.#month)) {
         case 1:
-          if (currentDay < 1) { // TODO: break this out?? make more dry
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
-        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
-        case 3:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 28
-          }
-          break
+        case 2:
         case 4:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
+        case 6:
+        case 8:
+        case 9:
+        case 11:
+          currentDay = this.handleDaySmallerThanOne(currentDay, 31)
+          break
+        case 3: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
+          currentDay = this.handleDaySmallerThanOne(currentDay, 28)
           break
         case 5:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 30
-          }
-          break
-        case 6:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
         case 7:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 30
-          }
-          break
-        case 8:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
-        case 9:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
         case 10:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 30
-          }
-          break
-        case 11:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 31
-          }
-          break
         case 12:
-          if (currentDay < 1) {
-            this.subtractMonths(1)
-            currentDay = 30
-          }
+          currentDay = this.handleDaySmallerThanOne(currentDay, 30)
           break
       }
     }
@@ -260,6 +206,21 @@ export class Date {
     } else {
       this.#day = currentDay.toString()
     }
+  }
+
+  /**
+   * Checks if current day is smaller than one, if so subtracts a month and sets current day accordingly.
+   *
+   * @param {number} currentDay - The current day.
+   * @param {number} nextMonthMaxDays - The max amount of days in the next month (current month - 1)
+   * @returns {number} - The current day after checking, possibly changed.
+   */
+  handleDaySmallerThanOne(currentDay, nextMonthMaxDays) {
+    if (currentDay < 1) {
+      this.subtractMonths(1)
+      currentDay = nextMonthMaxDays
+    }
+    return currentDay
   }
 
   /**
