@@ -86,16 +86,16 @@ export class Date {
         case 8:
         case 10:
         case 12:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 31)
+          currentDay = this.handleIfLargerThanMaxDays(currentDay, 31)
           break
         case 4:
         case 6:
         case 9:
         case 11:
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 30)
+          currentDay = this.handleIfLargerThanMaxDays(currentDay, 30)
           break
         case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
-          currentDay = this.checkIfLargerThanMaxDays(currentDay, 29)
+          currentDay = this.handleIfLargerThanMaxDays(currentDay, 29)
           break
       }
     }
@@ -114,7 +114,7 @@ export class Date {
    * @param {number} maxDays - The max amount of days of the month.
    * @returns {number} - The current day after checking, possibly changed.
    */
-  checkIfLargerThanMaxDays (currentDay, maxDays) { // TODO: Change name?
+  handleIfLargerThanMaxDays (currentDay, maxDays) { // TODO: Change name?
     if (currentDay > maxDays) {
       this.addMonths(1)
       currentDay = 1
