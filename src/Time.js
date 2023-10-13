@@ -186,45 +186,57 @@ export class Time {
       newHour = 12
       return `${newHour}:${minute}am`
     } else {
-      switch (hour) { // TODO: break this out?
-        case 12:
-          newHour = hour.toString()
-          break
-        case 13:
-          newHour = '01'
-          break
-        case 14:
-          newHour = '02'
-          break
-        case 15:
-          newHour = '03'
-          break
-        case 16:
-          newHour = '04'
-          break
-        case 17:
-          newHour = '05'
-          break
-        case 18:
-          newHour = '06'
-          break
-        case 19:
-          newHour = '07'
-          break
-        case 20:
-          newHour = '08'
-          break
-        case 21:
-          newHour = '09'
-          break
-        case 22:
-          newHour = '10'
-          break
-        case 23:
-          newHour = '11'
-          break
-      }
+      newHour = this.#toPmHour(hour)
       return `${newHour}:${minute}pm`
     }
+  }
+
+  /**
+   * Transforms an hour from 24 hour time format to pm (12 hour time format).
+   *
+   * @param {number} hour - The hour in 23 hour time format.
+   * @returns {string} The hour in pm.
+   */
+  #toPmHour (hour) { // TODO: Fix name
+    let newHour = ''
+    switch (hour) {
+      case 12:
+        newHour = hour.toString()
+        break
+      case 13:
+        newHour = '01'
+        break
+      case 14:
+        newHour = '02'
+        break
+      case 15:
+        newHour = '03'
+        break
+      case 16:
+        newHour = '04'
+        break
+      case 17:
+        newHour = '05'
+        break
+      case 18:
+        newHour = '06'
+        break
+      case 19:
+        newHour = '07'
+        break
+      case 20:
+        newHour = '08'
+        break
+      case 21:
+        newHour = '09'
+        break
+      case 22:
+        newHour = '10'
+        break
+      case 23:
+        newHour = '11'
+        break
+    }
+    return newHour
   }
 }
