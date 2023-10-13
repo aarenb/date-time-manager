@@ -110,25 +110,6 @@ export class Date {
   }
 
   /**
-   * Checks if a year is a leap year.
-   *
-   * @param {number} year - The year to check.
-   * @returns {boolean} True if leap year, otherwise false.
-   */
-  #isLeapYear (year) {
-    if (year % 4 === 0) {
-      if (year % 100 === 0) {
-        if (year % 400 === 0) {
-          return true
-        }
-        return false
-      }
-      return true
-    }
-    return false
-  }
-
-  /**
    * Adds a certain amount of months to the date.
    *
    * @param {number} months - The amount of months to add.
@@ -265,6 +246,25 @@ export class Date {
       currentDay = nextMonthMaxDays
     }
     return currentDay
+  }
+
+  /**
+   * Checks if a year is a leap year.
+   *
+   * @param {number} year - The year to check.
+   * @returns {boolean} True if leap year, otherwise false.
+   */
+  #isLeapYear (year) {
+    if (year % 4 === 0) {
+      if (year % 100 === 0) {
+        if (year % 400 === 0) {
+          return true
+        }
+        return false
+      }
+      return true
+    }
+    return false
   }
 
   /**
