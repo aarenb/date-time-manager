@@ -89,6 +89,25 @@ export class Time {
   }
 
   /**
+   * Add a certain amount of minutes to the time object.
+   *
+   * @param {number} minutes - The amount of minutes to add.
+   */
+  addMinutes (minutes) {
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
+
+    let currentMinute = this.#minute
+
+    for (let i = 0; i < minutes; i++) {
+      currentMinute++
+      if (currentMinute > 59) {
+        this.addHours(1)
+        currentMinute = 0
+      }
+    }
+  }
+
+  /**
    * Add a certain amount of hours to the time object.
    *
    * @param {number} hours - The amount of hours to add.
