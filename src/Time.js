@@ -18,6 +18,9 @@ export class Time {
 
     this.#exceptionHandler.guardAgainstNotString(time)
     this.#exceptionHandler.guardAgainstNotNumber(format)
+    if (format !== 12 & format !== 24) { // TODO: Add this in exception handler??
+      throw new TypeError('The passed argument is not a correct format (12/24)')
+    }
 
     this.#setTimeIn12HourClockFormat(time, format)
     this.#setTimeIn24HourClockFormat(time, format)
