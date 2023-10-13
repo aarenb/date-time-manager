@@ -60,35 +60,6 @@ export class Time {
   }
 
   /**
-   * Add a certain amount of time to the time object.
-   *
-   * @param {number} hours - The amount of hours to add.
-   * @param {number} minutes - The amount of minutes to add.
-   */
-  addTime (hours, minutes) {
-    this.#exceptionHandler.guardAgainstNotNumber(hours)
-    this.#exceptionHandler.guardAgainstNotNumber(minutes)
-
-    let currentHour = this.#hour
-
-    let currentMinute = this.#minute
-    for (let i = 0; i < minutes; i++) {
-      currentMinute++
-      if (currentMinute > 59) {
-        currentHour++
-        currentMinute = 0
-      }
-    }
-
-    for (let i = 0; i < hours; i++) {
-      currentHour++
-      if (currentHour > 23) {
-        currentHour = currentHour - 24
-      }
-    }
-  }
-
-  /**
    * Add a certain amount of minutes to the time object.
    *
    * @param {number} minutes - The amount of minutes to add.
@@ -105,6 +76,8 @@ export class Time {
         currentMinute = 0
       }
     }
+
+    this.#setMinute(currentMinute)
   }
 
   /**
