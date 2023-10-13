@@ -115,6 +115,7 @@ export class Date {
    * @param {number} months - The amount of months to add.
    */
   addMonths (months) {
+    // TODO: Fix so you can't get a date that doesn't exist (ex. 30 February)
     this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
@@ -205,6 +206,7 @@ export class Date {
    * @param {number} months - The amount of months to subtract.
    */
   subtractMonths (months) {
+    // TODO: Fix so you can't get a date that doesn't exist (ex. 30 February)
     this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
