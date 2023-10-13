@@ -4,8 +4,8 @@ import { ExceptionHandler } from './ExceptionHandler'
  * Represents a certain time.
  */
 export class Time {
-  #twelveH
-  #twentyFourH
+  #twelveHourFormat
+  #twentyFourHourFormat
   #exceptionHandler
   /**
    * Initializes a new instance of the Time class.
@@ -20,11 +20,11 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotNumber(format)
 
     if (format === 12) {
-      this.#twelveH = time
-      this.#twentyFourH = this.#to24HourClock(time)
+      this.#twelveHourFormat = time
+      this.#twentyFourHourFormat = this.#to24HourClock(time)
     } else if (format === 24) {
-      this.#twentyFourH = time
-      this.#twelveH = this.#to12HourClock(time)
+      this.#twentyFourHourFormat = time
+      this.#twelveHourFormat = this.#to12HourClock(time)
     } else {
       throw new TypeError('The passed argument is not a valid format, it should be 12 or 24.')
     }
@@ -36,7 +36,7 @@ export class Time {
    * @returns {string} The time in 12h clock format (hh:mmxm).
    */
   get12HourClock () {
-    return this.#twelveH
+    return this.#twelveHourFormat
   }
 
   /**
@@ -45,7 +45,7 @@ export class Time {
    * @returns {string} The time in 24h clock format (hh:mm).
    */
   get24HourClock () {
-    return this.#twentyFourH
+    return this.#twentyFourHourFormat
   }
 
   /**
@@ -58,8 +58,8 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotNumber(hours)
     this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
-    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
-    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
+    let currentHours = Number(`${this.#twentyFourHourFormat.charAt(0)}${this.#twentyFourHourFormat.charAt(1)}`)
+    let currentMinutes = Number(`${this.#twentyFourHourFormat.charAt(3)}${this.#twentyFourHourFormat.charAt(4)}`)
 
     for (let i = 0; i < minutes; i++) {
       currentMinutes++
@@ -83,8 +83,8 @@ export class Time {
       currentMinutes = `0${currentMinutes.toString()}`
     }
 
-    this.#twentyFourH = `${currentHours}:${currentMinutes}`
-    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
+    this.#twentyFourHourFormat = `${currentHours}:${currentMinutes}`
+    this.#twelveHourFormat = this.#to12HourClock(this.#twentyFourHourFormat)
   }
 
   /**
@@ -97,8 +97,8 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotNumber(hours)
     this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
-    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
-    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
+    let currentHours = Number(`${this.#twentyFourHourFormat.charAt(0)}${this.#twentyFourHourFormat.charAt(1)}`)
+    let currentMinutes = Number(`${this.#twentyFourHourFormat.charAt(3)}${this.#twentyFourHourFormat.charAt(4)}`)
 
     for (let i = 0; i < minutes; i++) {
       currentMinutes--
@@ -122,8 +122,8 @@ export class Time {
       currentMinutes = `0${currentMinutes.toString()}`
     }
 
-    this.#twentyFourH = `${currentHours}:${currentMinutes}`
-    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
+    this.#twentyFourHourFormat = `${currentHours}:${currentMinutes}`
+    this.#twelveHourFormat = this.#to12HourClock(this.#twentyFourHourFormat)
   }
 
   /**
