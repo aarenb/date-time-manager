@@ -11,20 +11,20 @@ export class Date {
   /**
    * Initializes a new instance of the Date class.
    *
-   * @param {string} year - The year (yyyy)
-   * @param {string} month - The month (mm)
-   * @param {string} day - The day (dd)
+   * @param {number} year - The year
+   * @param {number} month - The month
+   * @param {number} day - The day
    */
   constructor (year, month, day) {
     this.#exceptionHandler = new ExceptionHandler()
 
-    this.#exceptionHandler.guardAgainstNotString(year)
-    this.#exceptionHandler.guardAgainstNotString(month)
-    this.#exceptionHandler.guardAgainstNotString(day)
+    this.#exceptionHandler.guardAgainstNotNumber(year)
+    this.#exceptionHandler.guardAgainstNotNumber(month)
+    this.#exceptionHandler.guardAgainstNotNumber(day)
 
-    this.#fullYear = year
-    this.#month = month
-    this.#day = day
+    this.#setYear(year)
+    this.#setMonth(month)
+    this.#setDay(day)
   }
 
   /**
