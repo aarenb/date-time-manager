@@ -101,6 +101,27 @@ export class Time {
   }
 
   /**
+   * Subtracts a certain amount of minutes from the time object.
+   *
+   * @param {number} minutes - The amount of minutes to subtract.
+   */
+  subtractMinutes (minutes) {
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
+
+    let currentMinute = this.#minute
+
+    for (let i = 0; i < minutes; i++) {
+      currentMinute--
+      if (currentMinute < 0) {
+        this.subtractHours(1)
+        currentMinute = 59
+      }
+    }
+
+    this.#setMinute(currentMinute)
+  }
+
+  /**
    * Subtracts a certain amount of hours from the time object.
    *
    * @param {number} hours - The amount of hours to subtract.
