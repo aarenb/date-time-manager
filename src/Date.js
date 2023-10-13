@@ -28,41 +28,6 @@ export class Date {
   }
 
   /**
-   * Sets the day.
-   *
-   * @param {number} day - The day to set.
-   */
-  #setDay (day) {
-    if (day < 10) {
-      this.#day = `0${day.toString()}`
-    } else {
-      this.#day = day.toString()
-    }
-  }
-
-  /**
-   * Sets the month.
-   *
-   * @param {number} month - The month to set.
-   */
-  #setMonth (month) {
-    if (month < 10) {
-      this.#month = `0${month.toString()}`
-    } else {
-      this.#month = month.toString()
-    }
-  }
-
-  /**
-   * Sets the year.
-   *
-   * @param {number} year - The year to set.
-   */
-  #setYear (year) {
-    this.#fullYear = year.toString()
-  }
-
-  /**
    * Returns the date in a certain format.
    *
    * @param {string} format - The format to return the date in, (ex. dd/mm/yy).
@@ -141,21 +106,6 @@ export class Date {
   }
 
   /**
-   * Checks if the current day is larger than the max amount of days, and if so adds a month and makes current day 1.
-   *
-   * @param {number} currentDay - The current day to check.
-   * @param {number} maxDays - The max amount of days of the month.
-   * @returns {number} - The current day after checking, possibly changed.
-   */
-  #handleIfLargerThanMaxDays (currentDay, maxDays) { // TODO: Change name?
-    if (currentDay > maxDays) {
-      this.addMonths(1)
-      currentDay = 1
-    }
-    return currentDay
-  }
-
-  /**
    * Adds a certain amount of months to the date.
    *
    * @param {number} months - The amount of months to add.
@@ -187,6 +137,21 @@ export class Date {
     let currentYear = Number(this.#fullYear)
     currentYear += years
     this.#setYear(currentYear)
+  }
+
+  /**
+   * Checks if the current day is larger than the max amount of days, and if so adds a month and makes current day 1.
+   *
+   * @param {number} currentDay - The current day to check.
+   * @param {number} maxDays - The max amount of days of the month.
+   * @returns {number} - The current day after checking, possibly changed.
+   */
+  #handleIfLargerThanMaxDays (currentDay, maxDays) { // TODO: Change name?
+    if (currentDay > maxDays) {
+      this.addMonths(1)
+      currentDay = 1
+    }
+    return currentDay
   }
 
   /**
@@ -227,21 +192,6 @@ export class Date {
   }
 
   /**
-   * Checks if current day is smaller than one, if so subtracts a month and sets current day accordingly.
-   *
-   * @param {number} currentDay - The current day.
-   * @param {number} nextMonthMaxDays - The max amount of days in the next month (current month - 1)
-   * @returns {number} - The current day after checking, possibly changed.
-   */
-  #handleDaySmallerThanOne (currentDay, nextMonthMaxDays) {
-    if (currentDay < 1) {
-      this.subtractMonths(1)
-      currentDay = nextMonthMaxDays
-    }
-    return currentDay
-  }
-
-  /**
    * Subtracts a certain amount of months from the date.
    *
    * @param {number} months - The amount of months to subtract.
@@ -273,6 +223,56 @@ export class Date {
     let currentYear = Number(this.#fullYear)
     currentYear -= years
     this.#setYear(currentYear)
+  }
+
+  /**
+   * Checks if current day is smaller than one, if so subtracts a month and sets current day accordingly.
+   *
+   * @param {number} currentDay - The current day.
+   * @param {number} nextMonthMaxDays - The max amount of days in the next month (current month - 1)
+   * @returns {number} - The current day after checking, possibly changed.
+   */
+  #handleDaySmallerThanOne (currentDay, nextMonthMaxDays) {
+    if (currentDay < 1) {
+      this.subtractMonths(1)
+      currentDay = nextMonthMaxDays
+    }
+    return currentDay
+  }
+
+  /**
+   * Sets the day.
+   *
+   * @param {number} day - The day to set.
+   */
+  #setDay (day) {
+    if (day < 10) {
+      this.#day = `0${day.toString()}`
+    } else {
+      this.#day = day.toString()
+    }
+  }
+
+  /**
+   * Sets the month.
+   *
+   * @param {number} month - The month to set.
+   */
+  #setMonth (month) {
+    if (month < 10) {
+      this.#month = `0${month.toString()}`
+    } else {
+      this.#month = month.toString()
+    }
+  }
+
+  /**
+   * Sets the year.
+   *
+   * @param {number} year - The year to set.
+   */
+  #setYear (year) {
+    this.#fullYear = year.toString()
   }
 
   /**
