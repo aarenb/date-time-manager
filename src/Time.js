@@ -93,7 +93,27 @@ export class Time {
     for (let i = 0; i < hours; i++) {
       currentHour++
       if (currentHour > 23) {
-        currentHour = currentHour - 24
+        currentHour = 0
+      }
+    }
+
+    this.#setHour(currentHour)
+  }
+
+  /**
+   * Subtracts a certain amount of hours from the time object.
+   *
+   * @param {number} hours - The amount of hours to subtract.
+   */
+  subtractHours (hours) {
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
+
+    let currentHour = this.#hour
+
+    for (let i = 0; i < hours; i++) {
+      currentHour--
+      if (currentHour < 0) {
+        currentHour = 23
       }
     }
 
