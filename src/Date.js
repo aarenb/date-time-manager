@@ -96,13 +96,36 @@ export class Date {
         case 11:
           currentDay = this.handleIfLargerThanMaxDays(currentDay, 30)
           break
-        case 2: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
-          currentDay = this.handleIfLargerThanMaxDays(currentDay, 29)
+        case 2:
+          if (this.#isLeapYear(Number(this.#fullYear))) {
+            currentDay = this.handleIfLargerThanMaxDays(currentDay, 29)
+          } else {
+            currentDay = this.handleIfLargerThanMaxDays(currentDay, 28)
+          }
           break
       }
     }
 
     this.#setDay(currentDay)
+  }
+
+  /**
+   * Checks if a year is a leap year.
+   *
+   * @param {number} year - The year to check.
+   * @returns {boolean} True if leap year, otherwise false.
+   */
+  #isLeapYear (year) {
+    if (year % 4 === 0) {
+      if (year % 100 === 0) {
+        if (year % 400 === 0) {
+          return true
+        }
+        return false
+      }
+      return true
+    }
+    return false
   }
 
   /**
@@ -176,8 +199,12 @@ export class Date {
         case 11:
           currentDay = this.handleDaySmallerThanOne(currentDay, 31)
           break
-        case 3: // TODO: Check if it's a leap year (NOTE: Will need to write new automatic tests after implementing this!!)
-          currentDay = this.handleDaySmallerThanOne(currentDay, 28)
+        case 3:
+          if (this.#isLeapYear(Number(this.#fullYear))) {
+            currentDay = this.handleDaySmallerThanOne(currentDay, 29)
+          } else {
+            currentDay = this.handleDaySmallerThanOne(currentDay, 28)
+          }
           break
         case 5:
         case 7:
