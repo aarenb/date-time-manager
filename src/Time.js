@@ -58,33 +58,52 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotNumber(hours)
     this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
-    let currentHours = Number(`${this.#twentyFourHourFormat.charAt(0)}${this.#twentyFourHourFormat.charAt(1)}`)
-    let currentMinutes = Number(`${this.#twentyFourHourFormat.charAt(3)}${this.#twentyFourHourFormat.charAt(4)}`)
+    let currentHour = this.#getHour()
+
+    let currentMinute = this.#getMinute()
 
     for (let i = 0; i < minutes; i++) {
-      currentMinutes++
-      if (currentMinutes > 59) {
-        currentHours++
-        currentMinutes = 0
+      currentMinute++
+      if (currentMinute > 59) {
+        currentHour++
+        currentMinute = 0
       }
     }
 
     for (let i = 0; i < hours; i++) {
-      currentHours++
-      if (currentHours > 23) {
-        currentHours = currentHours - 24
+      currentHour++
+      if (currentHour > 23) {
+        currentHour = currentHour - 24
       }
     }
 
-    if (currentHours < 10) {
-      currentHours = `0${currentHours.toString()}`
+    if (currentHour < 10) {
+      currentHour = `0${currentHour.toString()}`
     }
-    if (currentMinutes < 10) {
-      currentMinutes = `0${currentMinutes.toString()}`
+    if (currentMinute < 10) {
+      currentMinute = `0${currentMinute.toString()}`
     }
 
-    this.#twentyFourHourFormat = `${currentHours}:${currentMinutes}`
+    this.#twentyFourHourFormat = `${currentHour}:${currentMinute}`
     this.#twelveHourFormat = this.#to12HourClock(this.#twentyFourHourFormat)
+  }
+
+  /**
+   * Gets the time's hour in the 24 hour clock format.
+   *
+   * @returns {number} The hour.
+   */
+  #getHour () {
+    return Number(`${this.#twentyFourHourFormat.charAt(0)}${this.#twentyFourHourFormat.charAt(1)}`)
+  }
+
+  /**
+   * Gets the time's minute.
+   *
+   * @returns {number} The minute.
+   */
+  #getMinute () {
+    return Number(`${this.#twentyFourHourFormat.charAt(3)}${this.#twentyFourHourFormat.charAt(4)}`)
   }
 
   /**
