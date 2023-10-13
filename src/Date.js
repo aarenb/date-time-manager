@@ -28,6 +28,41 @@ export class Date {
   }
 
   /**
+   * Sets the day.
+   *
+   * @param {number} day - The day to set.
+   */
+  #setDay (day) {
+    if (day < 10) {
+      this.#day = `0${day.toString()}`
+    } else {
+      this.#day = day.toString()
+    }
+  }
+
+  /**
+   * Sets the month.
+   *
+   * @param {number} month - The month to set.
+   */
+  #setMonth (month) {
+    if (month < 10) {
+      this.#month = `0${month.toString()}`
+    } else {
+      this.#month = month.toString()
+    }
+  }
+
+  /**
+   * Sets the year.
+   *
+   * @param {number} year - The year to set.
+   */
+  #setYear (year) {
+    this.#fullYear = year.toString()
+  }
+
+  /**
    * Returns the date in a certain format.
    *
    * @param {string} format - The format to return the date in, (ex. dd/mm/yy).
@@ -102,11 +137,7 @@ export class Date {
       }
     }
 
-    if (currentDay < 10) {
-      this.#day = `0${currentDay.toString()}`
-    } else {
-      this.#day = currentDay.toString()
-    }
+    this.#setDay(currentDay)
   }
 
   /**
@@ -142,11 +173,7 @@ export class Date {
       }
     }
 
-    if (currentMonth < 10) {
-      this.#month = `0${currentMonth.toString()}`
-    } else {
-      this.#month = currentMonth.toString()
-    }
+    this.#setMonth(currentMonth)
   }
 
   /**
@@ -159,7 +186,7 @@ export class Date {
 
     let currentYear = Number(this.#fullYear)
     currentYear += years
-    this.#fullYear = currentYear.toString()
+    this.#setYear(currentYear)
   }
 
   /**
@@ -196,12 +223,7 @@ export class Date {
       }
     }
 
-    // TODO: Break this out??
-    if (currentDay < 10) {
-      this.#day = `0${currentDay.toString()}`
-    } else {
-      this.#day = currentDay.toString()
-    }
+    this.#setDay(currentDay)
   }
 
   /**
@@ -237,12 +259,7 @@ export class Date {
       }
     }
 
-    // TODO: Break this out??
-    if (currentMonth < 10) {
-      this.#month = `0${currentMonth.toString()}`
-    } else {
-      this.#month = currentMonth.toString()
-    }
+    this.#setMonth(currentMonth)
   }
 
   /**
@@ -255,7 +272,7 @@ export class Date {
 
     let currentYear = Number(this.#fullYear)
     currentYear -= years
-    this.#fullYear = currentYear.toString()
+    this.#setYear(currentYear)
   }
 
   /**
