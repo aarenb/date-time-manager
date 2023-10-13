@@ -123,6 +123,24 @@ export class Time {
   }
 
   /**
+   * Add a certain amount of hours to the time object.
+   *
+   * @param {number} hours - The amount of hours to add.
+   */
+  addHours (hours) {
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
+
+    let currentHour = this.#getHour()
+
+    for (let i = 0; i < hours; i++) {
+      currentHour++
+      if (currentHour > 23) {
+        currentHour = currentHour - 24
+      }
+    }
+  }
+
+  /**
    * Gets the time's hour in the 24 hour clock format.
    *
    * @returns {number} The hour.
