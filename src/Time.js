@@ -142,42 +142,6 @@ export class Time {
   }
 
   /**
-   * Subtracts a certain amount of time from the time object.
-   *
-   * @param {number} hours - The amount of hours to subtract.
-   * @param {number} minutes - The amount of minutes to subtract.
-   */
-  subtractTime (hours, minutes) {
-    this.#exceptionHandler.guardAgainstNotNumber(hours)
-    this.#exceptionHandler.guardAgainstNotNumber(minutes)
-
-    let currentHour = this.#hour
-    let currentMinute = this.#minute
-
-    for (let i = 0; i < minutes; i++) {
-      currentMinute--
-      if (currentMinute < 0) {
-        currentHour--
-        currentMinute = 59
-      }
-    }
-
-    for (let i = 0; i < hours; i++) {
-      currentHour--
-      if (currentHour < 0) {
-        currentHour = 23
-      }
-    }
-
-    if (currentHour < 10) {
-      currentHour = `0${currentHour.toString()}`
-    }
-    if (currentMinute < 10) {
-      currentMinute = `0${currentMinute.toString()}`
-    }
-  }
-
-  /**
    * Formats time into the 24 hour clock.
    *
    * @param {number} hour - The time's hour.
