@@ -19,7 +19,7 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotString(time)
     this.#exceptionHandler.guardAgainstNotNumber(format)
 
-    if (format === 12) {
+    if (format === 12) { // TODO: Break this out?
       this.#twelveHourFormat = time
       this.#twentyFourHourFormat = this.#to24HourClock(time)
     } else if (format === 24) {
@@ -35,7 +35,7 @@ export class Time {
    *
    * @returns {string} The time in 12h clock format (hh:mmxm).
    */
-  get12HourClock () {
+  getTimeIn12HourClockFormat () {
     return this.#twelveHourFormat
   }
 
@@ -44,7 +44,7 @@ export class Time {
    *
    * @returns {string} The time in 24h clock format (hh:mm).
    */
-  get24HourClock () {
+  getTimeIn24HourClockFormat () {
     return this.#twentyFourHourFormat
   }
 
