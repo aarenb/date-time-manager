@@ -19,14 +19,35 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotString(time)
     this.#exceptionHandler.guardAgainstNotNumber(format)
 
-    if (format === 12) { // TODO: Break this out?
+    this.#setTimeIn12HourClockFormat(time, format)
+    this.#setTimeIn24HourClockFormat(time, format)
+  }
+
+  /**
+   * Sets the time in the 12 hour clock format.
+   *
+   * @param {string} time - The time
+   * @param {number} format - The format of the entered time (12/24)
+   */
+  #setTimeIn12HourClockFormat (time, format) {
+    if (format === 12) {
       this.#twelveHourFormat = time
-      this.#twentyFourHourFormat = this.#to24HourClock(time)
-    } else if (format === 24) {
-      this.#twentyFourHourFormat = time
-      this.#twelveHourFormat = this.#to12HourClock(time)
     } else {
-      throw new TypeError('The passed argument is not a valid format, it should be 12 or 24.')
+      this.#twelveHourFormat = this.#to12HourClock(time)
+    }
+  }
+
+  /**
+   * Sets the time in the 24 hour clock format.
+   *
+   * @param {string} time - The time
+   * @param {number} format - The format of the entered time (12/24)
+   */
+  #setTimeIn24HourClockFormat (time, format) {
+    if (format === 24) {
+      this.#twentyFourHourFormat = time
+    } else {
+      this.#twentyFourHourFormat = this.#to24HourClock(time)
     }
   }
 
