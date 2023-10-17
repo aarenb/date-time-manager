@@ -30,7 +30,6 @@ describe('addMinutes', () => {
     testTime.addMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
-  // TODO: Add tests for errors
 })
 
 describe('addHours', () => {
@@ -45,7 +44,6 @@ describe('addHours', () => {
     testTime.addHours(12)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
   })
-  // TODO: Add tests for errors
 })
 
 describe('subtractMinutes', () => {
@@ -66,7 +64,6 @@ describe('subtractMinutes', () => {
     testTime.subtractMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
-  // TODO: Add tests for errors
 })
 
 describe('subtractHours', () => {
@@ -81,5 +78,6 @@ describe('subtractHours', () => {
     testTime.subtractHours(12)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
   })
-  // TODO: Add tests for errors
 })
+
+// TODO: Add tests for errors

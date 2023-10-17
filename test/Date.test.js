@@ -35,7 +35,6 @@ describe('getFormatedDate', () => {
     const testDate = new Date(2003, 7, 11)
     expect(testDate.getFormatedDate('dd month yyyy')).toBe('11 July 2003')
   })
-  // TODO: Add tests for errors
 })
 
 describe('addDays', () => {
@@ -68,7 +67,6 @@ describe('addDays', () => {
     testDate.addDays(18)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
-  // TODO: Add tests for errors
 })
 
 describe('addMonths', () => {
@@ -83,8 +81,6 @@ describe('addMonths', () => {
     testDate.addMonths(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2004')
   })
-
-  // TODO: Add tests for errors
 })
 
 describe('addYears', () => {
@@ -99,7 +95,6 @@ describe('addYears', () => {
     testDate.addYears(10)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2013')
   })
-  // TODO: Add tests for errors
 })
 
 describe('subtractDays', () => {
@@ -126,7 +121,6 @@ describe('subtractDays', () => {
     testDate.subtractDays(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
-  // TODO: Add tests for errors
 })
 
 describe('subtractMonths', () => {
@@ -141,7 +135,6 @@ describe('subtractMonths', () => {
     testDate.subtractMonths(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2002')
   })
-  // TODO: Add tests for errors
 })
 
 describe('subtractYears', () => {
@@ -156,5 +149,6 @@ describe('subtractYears', () => {
     testDate.subtractYears(10)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/1993')
   })
-  // TODO: Add tests for errors
 })
+
+// TODO: Add tests for errors
