@@ -1,5 +1,21 @@
 import { Time } from '../src/Time.js'
 
+describe('setHour', () => {
+  test('20 should result in 20:45', () => {
+    const testTime = new Time(13, 45)
+    testTime.setHour(20)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('20:45')
+  })
+})
+
+describe('setMinute', () => {
+  test('20 should result in 13:20', () => {
+    const testTime = new Time(13, 45)
+    testTime.setMinute(20)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('13:20')
+  })
+})
+
 describe('Get formated time', () => {
   test('getTimeIn12HourClockFormat should return 01:45pm', () => {
     const testTime = new Time(13, 45)
