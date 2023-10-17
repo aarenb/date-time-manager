@@ -22,9 +22,9 @@ export class Date {
     this.#exceptionHandler.guardAgainstNotNumber(month)
     this.#exceptionHandler.guardAgainstNotNumber(day)
 
-    this.#setYear(year)
-    this.#setMonth(month)
-    this.#setDay(day)
+    this.setYear(year)
+    this.setMonth(month)
+    this.setDay(day)
   }
 
   /**
@@ -106,7 +106,7 @@ export class Date {
       }
     }
 
-    this.#setDay(currentDay)
+    this.setDay(currentDay)
   }
 
   /**
@@ -128,7 +128,7 @@ export class Date {
       }
     }
 
-    this.#setMonth(currentMonth)
+    this.setMonth(currentMonth)
   }
 
   /**
@@ -141,7 +141,7 @@ export class Date {
 
     let currentYear = Number(this.#fullYear)
     currentYear += years
-    this.#setYear(currentYear)
+    this.setYear(currentYear)
   }
 
   /**
@@ -197,7 +197,7 @@ export class Date {
       }
     }
 
-    this.#setDay(currentDay)
+    this.setDay(currentDay)
   }
 
   /**
@@ -219,7 +219,7 @@ export class Date {
       }
     }
 
-    this.#setMonth(currentMonth)
+    this.setMonth(currentMonth)
   }
 
   /**
@@ -232,7 +232,48 @@ export class Date {
 
     let currentYear = Number(this.#fullYear)
     currentYear -= years
-    this.#setYear(currentYear)
+    this.setYear(currentYear)
+  }
+
+  /**
+   * Sets the day.
+   *
+   * @param {number} day - The day to set.
+   */
+  setDay (day) {
+    this.#exceptionHandler.guardAgainstNotNumber(day)
+
+    if (day < 10) {
+      this.#day = `0${day.toString()}`
+    } else {
+      this.#day = day.toString()
+    }
+  }
+
+  /**
+   * Sets the month.
+   *
+   * @param {number} month - The month to set.
+   */
+  setMonth (month) {
+    this.#exceptionHandler.guardAgainstNotNumber(month)
+
+    if (month < 10) {
+      this.#month = `0${month.toString()}`
+    } else {
+      this.#month = month.toString()
+    }
+  }
+
+  /**
+   * Sets the year.
+   *
+   * @param {number} year - The year to set.
+   */
+  setYear (year) {
+    this.#exceptionHandler.guardAgainstNotNumber(year)
+
+    this.#fullYear = year.toString()
   }
 
   /**
@@ -267,41 +308,6 @@ export class Date {
       return true
     }
     return false
-  }
-
-  /**
-   * Sets the day.
-   *
-   * @param {number} day - The day to set.
-   */
-  #setDay (day) {
-    if (day < 10) {
-      this.#day = `0${day.toString()}`
-    } else {
-      this.#day = day.toString()
-    }
-  }
-
-  /**
-   * Sets the month.
-   *
-   * @param {number} month - The month to set.
-   */
-  #setMonth (month) {
-    if (month < 10) {
-      this.#month = `0${month.toString()}`
-    } else {
-      this.#month = month.toString()
-    }
-  }
-
-  /**
-   * Sets the year.
-   *
-   * @param {number} year - The year to set.
-   */
-  #setYear (year) {
-    this.#fullYear = year.toString()
   }
 
   /**
