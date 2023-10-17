@@ -52,6 +52,12 @@ describe('addDays', () => {
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('10/08/2003')
   })
 
+  test('12 should result in 01/01/2004', () => {
+    const testDate = new Date(2003, 12, 20)
+    testDate.addDays(12)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('01/01/2004')
+  })
+
   test('18 should result in 01/03/2003 (not leap year)', () => {
     const testDate = new Date(2003, 2, 11)
     testDate.addDays(18)
@@ -63,6 +69,10 @@ describe('addDays', () => {
     testDate.addDays(18)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
+})
+
+describe('addMonths', () => {
+  // TODO: Add tests
 })
 
 // describe('addTime', () => {
