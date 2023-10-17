@@ -1,5 +1,29 @@
 import { Date } from '../src/Date.js'
 
+describe('setYear', () => {
+  test('2000 result in 11/07/2000', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.setYear(2000)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2000')
+  })
+})
+
+describe('setMonth', () => {
+  test('11 result in 11/11/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.setMonth(11)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/11/2003')
+  })
+})
+
+describe('setDay', () => {
+  test('26 result in 26/07/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.setDay(26)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('26/07/2003')
+  })
+})
+
 describe('getFormatedDate', () => {
   test('dd/mm/yyyy should result in 11/07/2003', () => {
     const testDate = new Date(2003, 7, 11)
