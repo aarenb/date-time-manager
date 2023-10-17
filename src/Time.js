@@ -16,9 +16,6 @@ export class Time {
   constructor (hour, minute) {
     this.#exceptionHandler = new ExceptionHandler()
 
-    this.#exceptionHandler.guardAgainstNotNumber(hour)
-    this.#exceptionHandler.guardAgainstNotNumber(minute)
-
     this.setHour(hour)
     this.setMinute(minute)
   }
@@ -29,6 +26,8 @@ export class Time {
    * @param {number} hour - The hour to set.
    */
   setHour (hour) {
+    this.#exceptionHandler.guardAgainstNotNumber(hour)
+
     this.#hour = hour
   }
 
@@ -38,6 +37,8 @@ export class Time {
    * @param {number} minute - The minute to set.
    */
   setMinute (minute) {
+    this.#exceptionHandler.guardAgainstNotNumber(minute)
+
     this.#minute = minute
   }
 

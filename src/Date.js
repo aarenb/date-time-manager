@@ -18,10 +18,6 @@ export class Date {
   constructor (year, month, day) {
     this.#exceptionHandler = new ExceptionHandler()
 
-    this.#exceptionHandler.guardAgainstNotNumber(year)
-    this.#exceptionHandler.guardAgainstNotNumber(month)
-    this.#exceptionHandler.guardAgainstNotNumber(day)
-
     this.setYear(year)
     this.setMonth(month)
     this.setDay(day)
