@@ -30,6 +30,7 @@ describe('addMinutes', () => {
     testTime.addMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
+  // TODO: Add tests for errors
 })
 
 describe('addHours', () => {
@@ -44,6 +45,7 @@ describe('addHours', () => {
     testTime.addHours(12)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
   })
+  // TODO: Add tests for errors
 })
 
 describe('subtractMinutes', () => {
@@ -64,4 +66,20 @@ describe('subtractMinutes', () => {
     testTime.subtractMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
+  // TODO: Add tests for errors
+})
+
+describe('subtractHours', () => {
+  test('2 should result in 11:45', () => {
+    const testTime = new Time(13, 45)
+    testTime.subtractHours(2)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('11:45')
+  })
+
+  test('12 should result in 01:45', () => {
+    const testTime = new Time(13, 45)
+    testTime.subtractHours(12)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
+  })
+  // TODO: Add tests for errors
 })
