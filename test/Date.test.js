@@ -39,6 +39,32 @@ describe('getFormatedDate', () => {
   })
 })
 
+describe('addDays', () => {
+  test('10 should result in 21/07/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.addDays(10)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('21/07/2003')
+  })
+
+  test('30 should result in 10/08/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.addDays(30)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('10/08/2003')
+  })
+
+  test('18 should result in 01/03/2003 (not leap year)', () => {
+    const testDate = new Date(2003, 2, 11)
+    testDate.addDays(18)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('01/03/2003')
+  })
+
+  test('18 should result in 29/02/2004 (leap year)', () => {
+    const testDate = new Date(2004, 2, 11)
+    testDate.addDays(18)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
+  })
+})
+
 // describe('addTime', () => {
 //   test('1, 0, 0 should result in 11/07/2004', () => {
 //     testDate.addTime(1, 0, 0)

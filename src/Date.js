@@ -88,19 +88,19 @@ export class Date {
         case 8:
         case 10:
         case 12:
-          currentDay = this.handleDayLargerThanMax(currentDay, 31)
+          currentDay = this.#handleDayLargerThanMax(currentDay, 31)
           break
         case 4:
         case 6:
         case 9:
         case 11:
-          currentDay = this.handleDayLargerThanMax(currentDay, 30)
+          currentDay = this.#handleDayLargerThanMax(currentDay, 30)
           break
         case 2:
           if (this.#isLeapYear(Number(this.#fullYear))) {
-            currentDay = this.handleDayLargerThanMax(currentDay, 29)
+            currentDay = this.#handleDayLargerThanMax(currentDay, 29)
           } else {
-            currentDay = this.handleDayLargerThanMax(currentDay, 28)
+            currentDay = this.#handleDayLargerThanMax(currentDay, 28)
           }
           break
       }
