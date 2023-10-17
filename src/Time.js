@@ -19,8 +19,8 @@ export class Time {
     this.#exceptionHandler.guardAgainstNotNumber(hour)
     this.#exceptionHandler.guardAgainstNotNumber(minute)
 
-    this.#setHour(hour)
-    this.#setMinute(minute)
+    this.setHour(hour)
+    this.setMinute(minute)
   }
 
   /**
@@ -28,7 +28,7 @@ export class Time {
    *
    * @param {number} hour - The hour to set.
    */
-  #setHour (hour) {
+  setHour (hour) {
     this.#hour = hour
   }
 
@@ -37,7 +37,7 @@ export class Time {
    *
    * @param {number} minute - The minute to set.
    */
-  #setMinute (minute) {
+  setMinute (minute) {
     this.#minute = minute
   }
 
@@ -77,7 +77,7 @@ export class Time {
       }
     }
 
-    this.#setMinute(currentMinute)
+    this.setMinute(currentMinute)
   }
 
   /**
@@ -97,7 +97,7 @@ export class Time {
       }
     }
 
-    this.#setHour(currentHour)
+    this.setHour(currentHour)
   }
 
   /**
@@ -118,7 +118,7 @@ export class Time {
       }
     }
 
-    this.#setMinute(currentMinute)
+    this.setMinute(currentMinute)
   }
 
   /**
@@ -138,7 +138,7 @@ export class Time {
       }
     }
 
-    this.#setHour(currentHour)
+    this.setHour(currentHour)
   }
 
   /**
@@ -149,17 +149,8 @@ export class Time {
    * @returns {string} The time formated in the 24 hour clock (hh:mm).
    */
   #to24HourClockFormat (hour, minute) {
-    if (hour < 10) {
-      hour = `0${hour.toString()}`
-    } else {
-      hour = hour.toString()
-    }
-
-    if (minute < 10) {
-      minute = `0${minute.toString()}`
-    } else {
-      minute = minute.toString()
-    }
+    hour = this.#numberToTwoCharacterString(hour)
+    minute = this.#numberToTwoCharacterString(minute)
 
     return `${hour}:${minute}`
   }
@@ -173,14 +164,10 @@ export class Time {
    */
   #to12HourClockFormat (hour, minute) {
     let newHour = ''
-    minute = minute.toString()
+    minute = this.#numberToTwoCharacterString(minute)
 
     if (hour < 12 && hour > 0) {
-      if (hour < 10) {
-        newHour = `0${hour.toString()}`
-      } else {
-        newHour = hour.toString()
-      }
+      newHour = this.#numberToTwoCharacterString(hour)
       return `${newHour}:${minute}am`
     } else if (hour === 0) {
       newHour = 12
@@ -189,6 +176,22 @@ export class Time {
       newHour = this.#toPmHour(hour)
       return `${newHour}:${minute}pm`
     }
+  }
+
+  /**
+   * Transfers a number into a two character long string.
+   *
+   * @param {number} number - The numbner to transfer.
+   * @returns {string} The number as a two character string.
+   */
+  #numberToTwoCharacterString (number) {
+    let numberAsString = ''
+    if (number < 10) {
+      numberAsString = `0${number.toString()}`
+    } else {
+      numberAsString = number.toString()
+    }
+    return numberAsString
   }
 
   /**
