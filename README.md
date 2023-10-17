@@ -17,7 +17,7 @@ import { Date, Time } from 'time-date-manager'
 
 To create a new date object, input the arguments year, month and day
 ```
-const theDate = new Date('2003', '07', '11')
+const theDate = new Date(2003, 7, 11)
 ```
 Get the date in a specific format
 ```
@@ -36,41 +36,62 @@ All supported date formats:
 ```
 Add time to the date
 ```
-theDate.addTime(1, 2, 3)
-// + 1 year, 2 months, 3 days
+const theDate = new Date(2003, 7, 11)
+
+theDate.addYears(1) // '11/07/2004'
+theDate.addMonths(1) // '11/08/2004'
+theDate.addDays(1) // '12/08/2004'
 ```
-Remove time from the date
+Subtract time from the date
 ```
-theDate.removeTime(1, 2, 3)
-// - 1 year, 2 months, 3 days
+const theDate = new Date(2003, 7, 11)
+
+theDate.subtractYears(1) // '11/07/2002'
+theDate.subtractMonths(1) // '11/06/2002'
+theDate.subtractDays(1) // '10/06/2002'
+```
+Set a specific date
+```
+const theDate = new Date(2003, 7, 11)
+
+theDate.setYear(2022) // '11/07/2022'
+theDate.setMonth(10) // '11/10/2022'
+theDate.setDay(18) // '18/10/2022'
 ```
 --------
 ### Time
-To create a new time object, input the time as a string and in which format the time is (24 for 24h clock or 12 for 12h clock)  
-
-24h clock string format: 'hh:mm'  
-12h clock string format: 'hh:mmxm'
+To create a new time object, input the arguments hour(in the 24 hour clock format) and minute.
 ```
-const theTime = new Time('11:20', 24)
-const anotherTime = new Time('03:00pm', 12)
+const theTime = new Time(11, 20)
 ```
 Get time in 24h clock format
 ```
-anotherTime.get24HourClock() // '15:00'
+theTime.getTimeIn24HourClockFormat() // '11:20'
 ```
 Get time in 12h clock format
 ```
-theTime.get12HourClock() // '11:20am'
+theTime.getTimeIn12HourClockFormat() // '11:20am'
 ```
 Add time to the time object
 ```
-theTime.addTime(2, 30)
-// + 2 hours, 30 minutes
+const theTime = new Time(11, 20)
+
+theTime.addHours(1) // '12:20'
+theTime.addMinutes(1) // '12:21'
 ```
-Remove time from the time object
+Subtract time from the time object
 ```
-theTime.removeTime(2, 30)
-// - 2 hours, 30 minutes
+const theTime = new Time(11, 20)
+
+theTime.subtractHours(1) // '10:20'
+theTime.subtractMinutes(1) // '10:19'
+```
+Set a specific time
+```
+const theTime = new Time(11, 20)
+
+theTime.setHour(15) // '15:20'
+theTime.setMinute(30) // '15:30'
 ```
 
 ## For developers
