@@ -145,5 +145,16 @@ describe('subtractMonths', () => {
 })
 
 describe('subtractYears', () => {
-  // TODO: Add tests
+  test('1 should result in 11/07/2002', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.subtractYears(1)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2002')
+  })
+
+  test('10 should result in 11/07/1993', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.subtractYears(10)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/1993')
+  })
+  // TODO: Add tests for errors
 })
