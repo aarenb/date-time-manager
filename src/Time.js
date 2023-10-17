@@ -1,33 +1,45 @@
+import { ExceptionHandler } from './ExceptionHandler'
+
 /**
  * Represents a certain time.
  */
 export class Time {
-  #twelveH
-  #twentyFourH
+  #hour
+  #minute
+  #exceptionHandler
   /**
    * Initializes a new instance of the Time class.
    *
-   * @param {string} time - The time
-   * @param {number} format - The format of the entered time (12/24)
+   * @param {number} hour - The hour (as the 24 hour clock).
+   * @param {number} minute - The minute.
    */
-  constructor (time, format) {
-    if (typeof time !== 'string') {
-      throw new TypeError('The passed argument is not a string.') // TODO: break this out later?
-    }
+  constructor (hour, minute) {
+    this.#exceptionHandler = new ExceptionHandler()
 
-    if (typeof format !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+    this.setHour(hour)
+    this.setMinute(minute)
+  }
 
-    if (format === 12) {
-      this.#twelveH = time
-      this.#twentyFourH = this.#to24HourClock(time)
-    } else if (format === 24) {
-      this.#twentyFourH = time
-      this.#twelveH = this.#to12HourClock(time)
-    } else {
-      throw new TypeError('The passed argument is not a valid format, it should be 12 or 24.')
-    }
+  /**
+   * Sets the hour.
+   *
+   * @param {number} hour - The hour to set.
+   */
+  setHour (hour) {
+    this.#exceptionHandler.guardAgainstNotNumber(hour)
+
+    this.#hour = hour
+  }
+
+  /**
+   * Sets the minute.
+   *
+   * @param {number} minute - The minute to set.
+   */
+  setMinute (minute) {
+    this.#exceptionHandler.guardAgainstNotNumber(minute)
+
+    this.#minute = minute
   }
 
   /**
@@ -35,8 +47,8 @@ export class Time {
    *
    * @returns {string} The time in 12h clock format (hh:mmxm).
    */
-  get12HourClock () {
-    return this.#twelveH
+  getTimeIn12HourClockFormat () {
+    return this.#to12HourClockFormat(this.#hour, this.#minute)
   }
 
   /**
@@ -44,213 +56,191 @@ export class Time {
    *
    * @returns {string} The time in 24h clock format (hh:mm).
    */
-  get24HourClock () {
-    return this.#twentyFourH
+  getTimeIn24HourClockFormat () {
+    return this.#to24HourClockFormat(this.#hour, this.#minute)
   }
 
   /**
-   * Add a certain amount of time to the time object.
+   * Add a certain amount of minutes to the time object.
    *
-   * @param {number} hours - The amount of hours to add.
    * @param {number} minutes - The amount of minutes to add.
    */
-  addTime (hours, minutes) {
-    if (typeof hours !== 'number' || typeof minutes !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+  addMinutes (minutes) {
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
 
-    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
-    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
+    let currentMinute = this.#minute
 
     for (let i = 0; i < minutes; i++) {
-      currentMinutes++
-      if (currentMinutes > 59) {
-        currentHours++
-        currentMinutes = 0
+      currentMinute++
+      if (currentMinute > 59) {
+        this.addHours(1)
+        currentMinute = 0
       }
     }
 
-    for (let i = 0; i < hours; i++) {
-      currentHours++
-      if (currentHours > 23) {
-        currentHours = currentHours - 24
-      }
-    }
-
-    if (currentHours < 10) {
-      currentHours = `0${currentHours.toString()}`
-    }
-    if (currentMinutes < 10) {
-      currentMinutes = `0${currentMinutes.toString()}`
-    }
-
-    this.#twentyFourH = `${currentHours}:${currentMinutes}`
-    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
+    this.setMinute(currentMinute)
   }
 
   /**
-   * Removes a certain amount of time from the time object.
+   * Add a certain amount of hours to the time object.
    *
-   * @param {number} hours - The amount of hours to remove.
-   * @param {number} minutes - The amount of minutes to remove.
+   * @param {number} hours - The amount of hours to add.
    */
-  removeTime (hours, minutes) {
-    if (typeof hours !== 'number' || typeof minutes !== 'number') {
-      throw new TypeError('The passed argument is not a number.') // TODO: break this out later?
-    }
+  addHours (hours) {
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
 
-    let currentHours = Number(`${this.#twentyFourH.charAt(0)}${this.#twentyFourH.charAt(1)}`)
-    let currentMinutes = Number(`${this.#twentyFourH.charAt(3)}${this.#twentyFourH.charAt(4)}`)
-
-    for (let i = 0; i < minutes; i++) {
-      currentMinutes--
-      if (currentMinutes < 0) {
-        currentHours--
-        currentMinutes = 59
-      }
-    }
+    let currentHour = this.#hour
 
     for (let i = 0; i < hours; i++) {
-      currentHours--
-      if (currentHours < 0) {
-        currentHours = 23
+      currentHour++
+      if (currentHour > 23) {
+        currentHour = 0
       }
     }
 
-    if (currentHours < 10) {
-      currentHours = `0${currentHours.toString()}`
-    }
-    if (currentMinutes < 10) {
-      currentMinutes = `0${currentMinutes.toString()}`
+    this.setHour(currentHour)
+  }
+
+  /**
+   * Subtracts a certain amount of minutes from the time object.
+   *
+   * @param {number} minutes - The amount of minutes to subtract.
+   */
+  subtractMinutes (minutes) {
+    this.#exceptionHandler.guardAgainstNotNumber(minutes)
+
+    let currentMinute = this.#minute
+
+    for (let i = 0; i < minutes; i++) {
+      currentMinute--
+      if (currentMinute < 0) {
+        this.subtractHours(1)
+        currentMinute = 59
+      }
     }
 
-    this.#twentyFourH = `${currentHours}:${currentMinutes}`
-    this.#twelveH = this.#to12HourClock(this.#twentyFourH)
+    this.setMinute(currentMinute)
+  }
+
+  /**
+   * Subtracts a certain amount of hours from the time object.
+   *
+   * @param {number} hours - The amount of hours to subtract.
+   */
+  subtractHours (hours) {
+    this.#exceptionHandler.guardAgainstNotNumber(hours)
+
+    let currentHour = this.#hour
+
+    for (let i = 0; i < hours; i++) {
+      currentHour--
+      if (currentHour < 0) {
+        currentHour = 23
+      }
+    }
+
+    this.setHour(currentHour)
   }
 
   /**
    * Formats time into the 24 hour clock.
    *
-   * @param {string} time - The time to format in 12 hour clock (hh:mmxm).
+   * @param {number} hour - The time's hour.
+   * @param {number} minute - The time's minute.
    * @returns {string} The time formated in the 24 hour clock (hh:mm).
    */
-  #to24HourClock (time) {
-    let newHH = ''
-    const hh = `${time.charAt(0)}${time.charAt(1)}`
-    const mm = `${time.charAt(3)}${time.charAt(4)}`
-    const xm = `${time.charAt(5)}${time.charAt(6)}`
+  #to24HourClockFormat (hour, minute) {
+    hour = this.#numberToTwoCharacterString(hour)
+    minute = this.#numberToTwoCharacterString(minute)
 
-    if (xm === 'am') {
-      if (hh === '12') { // TODO: break this out?
-        newHH = '00'
-      } else {
-        newHH = hh
-      }
-      return `${newHH}:${mm}`
-    } else if (xm === 'pm') {
-      switch (hh) { // TODO: break this out?
-        case '01':
-          newHH = '13'
-          break
-        case '02':
-          newHH = '14'
-          break
-        case '03':
-          newHH = '15'
-          break
-        case '04':
-          newHH = '16'
-          break
-        case '05':
-          newHH = '17'
-          break
-        case '06':
-          newHH = '18'
-          break
-        case '07':
-          newHH = '19'
-          break
-        case '08':
-          newHH = '20'
-          break
-        case '09':
-          newHH = '21'
-          break
-        case '10':
-          newHH = '22'
-          break
-        case '11':
-          newHH = '23'
-          break
-        case '12':
-          newHH = '12'
-          break
-      }
-      return `${newHH}:${mm}`
-    } else {
-      throw new TypeError('The passed argument is not a valid 12h clock timestamp.')
-    }
+    return `${hour}:${minute}`
   }
 
   /**
    * Formats time into the 12 hour clock.
    *
-   * @param {string} time - The time to format in the 24 hour clock (hh:mm).
+   * @param {number} hour - The time's hour.
+   * @param {number} minute - The time's minute.
    * @returns {string} The time formatted in 12 hour clock (hh:mmxm).
    */
-  #to12HourClock (time) {
-    // TODO: dublicated code, break out???
-    // TODO: Check if hh and mm are correct????
-    let newHH = ''
-    const hh = `${time.charAt(0)}${time.charAt(1)}`
-    const mm = `${time.charAt(3)}${time.charAt(4)}`
+  #to12HourClockFormat (hour, minute) {
+    let newHour = ''
+    minute = this.#numberToTwoCharacterString(minute)
 
-    if (parseInt(hh) < 12 && parseInt(hh) > 0) {
-      newHH = hh
-      return `${newHH}:${mm}am`
-    } else if (hh === '00') {
-      newHH = 12
-      return `${newHH}:${mm}am`
+    if (hour < 12 && hour > 0) {
+      newHour = this.#numberToTwoCharacterString(hour)
+      return `${newHour}:${minute}am`
+    } else if (hour === 0) {
+      newHour = 12
+      return `${newHour}:${minute}am`
     } else {
-      switch (hh) { // TODO: break this out?
-        case '12':
-          newHH = hh
-          break
-        case '13':
-          newHH = '01'
-          break
-        case '14':
-          newHH = '02'
-          break
-        case '15':
-          newHH = '03'
-          break
-        case '16':
-          newHH = '04'
-          break
-        case '17':
-          newHH = '05'
-          break
-        case '18':
-          newHH = '06'
-          break
-        case '19':
-          newHH = '07'
-          break
-        case '20':
-          newHH = '08'
-          break
-        case '21':
-          newHH = '09'
-          break
-        case '22':
-          newHH = '10'
-          break
-        case '23':
-          newHH = '11'
-          break
-      }
-      return `${newHH}:${mm}pm`
+      newHour = this.#toPmHour(hour)
+      return `${newHour}:${minute}pm`
     }
+  }
+
+  /**
+   * Transfers a number into a two character long string.
+   *
+   * @param {number} number - The numbner to transfer.
+   * @returns {string} The number as a two character string.
+   */
+  #numberToTwoCharacterString (number) {
+    let numberAsString = ''
+    if (number < 10) {
+      numberAsString = `0${number.toString()}`
+    } else {
+      numberAsString = number.toString()
+    }
+    return numberAsString
+  }
+
+  /**
+   * Transforms an hour from 24 hour time format to pm (12 hour time format).
+   *
+   * @param {number} hour - The hour in 23 hour time format.
+   * @returns {string} The hour in pm.
+   */
+  #toPmHour (hour) { // TODO: Fix name
+    let newHour = ''
+    switch (hour) {
+      case 12:
+        newHour = hour.toString()
+        break
+      case 13:
+        newHour = '01'
+        break
+      case 14:
+        newHour = '02'
+        break
+      case 15:
+        newHour = '03'
+        break
+      case 16:
+        newHour = '04'
+        break
+      case 17:
+        newHour = '05'
+        break
+      case 18:
+        newHour = '06'
+        break
+      case 19:
+        newHour = '07'
+        break
+      case 20:
+        newHour = '08'
+        break
+      case 21:
+        newHour = '09'
+        break
+      case 22:
+        newHour = '10'
+        break
+      case 23:
+        newHour = '11'
+        break
+    }
+    return newHour
   }
 }
