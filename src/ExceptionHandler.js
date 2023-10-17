@@ -25,4 +25,11 @@ export class ExceptionHandler {
       throw new TypeError('The passed argument is not a number.')
     }
   }
+
+  /**
+   * Throws an error with the message 'This date does not exist'.
+   */
+  dateDoesNotExist () {
+    throw new Error('This date does not exist')
+  }
 }

@@ -111,7 +111,6 @@ export class Date {
    * @param {number} months - The amount of months to add.
    */
   addMonths (months) {
-    // TODO: Fix so you can't get a date that doesn't exist (ex. 30 February)
     this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
@@ -123,6 +122,8 @@ export class Date {
         currentMonth = 1
       }
     }
+
+    this.#checkIfDayExists(currentMonth)
 
     this.setMonth(currentMonth)
   }
@@ -202,7 +203,6 @@ export class Date {
    * @param {number} months - The amount of months to subtract.
    */
   subtractMonths (months) {
-    // TODO: Fix so you can't get a date that doesn't exist (ex. 30 February)
     this.#exceptionHandler.guardAgainstNotNumber(months)
 
     let currentMonth = Number(this.#month)
@@ -214,6 +214,8 @@ export class Date {
         currentMonth = 12
       }
     }
+
+    this.#checkIfDayExists(currentMonth)
 
     this.setMonth(currentMonth)
   }
@@ -229,6 +231,35 @@ export class Date {
     let currentYear = Number(this.#fullYear)
     currentYear -= years
     this.setYear(currentYear)
+  }
+
+  /**
+   * Checks if a day exists in a month, if not throws an error.
+   *
+   * @param {number} month - The month to check if a day exists in.
+   */
+  #checkIfDayExists (month) { // TODO: Better name?
+    switch (month) {
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        if (Number(this.#day) > 30) { // TODO: break this out?
+          this.#exceptionHandler.dateDoesNotExist()
+        }
+        break
+      case 2:
+        if (this.#isLeapYear(Number(this.#fullYear))) {
+          if (Number(this.#day) > 29) {
+            this.#exceptionHandler.dateDoesNotExist()
+          }
+        } else {
+          if (Number(this.#day) > 28) {
+            this.#exceptionHandler.dateDoesNotExist()
+          }
+        }
+        break
+    }
   }
 
   /**
