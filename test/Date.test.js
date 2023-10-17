@@ -115,17 +115,18 @@ describe('subtractDays', () => {
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('30/06/2003')
   })
 
-  test('12 should result in 28/02/2003', () => {
+  test('12 should result in 28/02/2003 (not leap year)', () => {
     const testDate = new Date(2003, 3, 12)
     testDate.subtractDays(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('28/02/2003')
   })
 
-  test('12 should result in 29/02/2004', () => {
+  test('12 should result in 29/02/2004 (leap year)', () => {
     const testDate = new Date(2004, 3, 12)
     testDate.subtractDays(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
+  // TODO: Add tests for errors
 })
 
 describe('subtractMonths', () => {
@@ -140,6 +141,7 @@ describe('subtractMonths', () => {
     testDate.subtractMonths(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2002')
   })
+  // TODO: Add tests for errors
 })
 
 describe('subtractYears', () => {
