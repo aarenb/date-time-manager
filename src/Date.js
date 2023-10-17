@@ -151,7 +151,7 @@ export class Date {
    * @param {number} maxDays - The max amount of days of the month.
    * @returns {number} - The current day after checking, possibly changed.
    */
-  #handleDayLargerThanMax (currentDay, maxDays) { // TODO: Change name?
+  #handleDayLargerThanMax (currentDay, maxDays) {
     if (currentDay > maxDays) {
       this.addMonths(1)
       currentDay = 1
