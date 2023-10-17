@@ -1,7 +1,5 @@
 import { Date } from '../src/Date.js'
 
-// const testDate = new Date('2003', '07', '11')
-
 describe('getFormatedDate', () => {
   test('dd/mm/yyyy should result in 11/07/2003', () => {
     const testDate = new Date(2003, 7, 11)
@@ -105,7 +103,29 @@ describe('addYears', () => {
 })
 
 describe('subtractDays', () => {
-  // TODO: Add tests
+  test('10 should result in 01/07/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.subtractDays(10)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('01/07/2003')
+  })
+
+  test('11 should result in 30/06/2003', () => {
+    const testDate = new Date(2003, 7, 11)
+    testDate.subtractDays(11)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('30/06/2003')
+  })
+
+  test('12 should result in 28/02/2003', () => {
+    const testDate = new Date(2003, 3, 12)
+    testDate.subtractDays(12)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('28/02/2003')
+  })
+
+  test('12 should result in 29/02/2004', () => {
+    const testDate = new Date(2004, 3, 12)
+    testDate.subtractDays(12)
+    expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
+  })
 })
 
 describe('subtractMonths', () => {

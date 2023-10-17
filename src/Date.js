@@ -179,20 +179,20 @@ export class Date {
         case 8:
         case 9:
         case 11:
-          currentDay = this.handleDaySmallerThanOne(currentDay, 31)
+          currentDay = this.#handleDaySmallerThanOne(currentDay, 31)
           break
         case 3:
           if (this.#isLeapYear(Number(this.#fullYear))) {
-            currentDay = this.handleDaySmallerThanOne(currentDay, 29)
+            currentDay = this.#handleDaySmallerThanOne(currentDay, 29)
           } else {
-            currentDay = this.handleDaySmallerThanOne(currentDay, 28)
+            currentDay = this.#handleDaySmallerThanOne(currentDay, 28)
           }
           break
         case 5:
         case 7:
         case 10:
         case 12:
-          currentDay = this.handleDaySmallerThanOne(currentDay, 30)
+          currentDay = this.#handleDaySmallerThanOne(currentDay, 30)
           break
       }
     }
