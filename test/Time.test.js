@@ -45,3 +45,23 @@ describe('addHours', () => {
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
   })
 })
+
+describe('subtractMinutes', () => {
+  test('10 should result in 13:35', () => {
+    const testTime = new Time(13, 45)
+    testTime.subtractMinutes(10)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('13:35')
+  })
+
+  test('50 should result in 12:55', () => {
+    const testTime = new Time(13, 45)
+    testTime.subtractMinutes(50)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('12:55')
+  })
+
+  test('30 should result in 00:00', () => {
+    const testTime = new Time(0, 30)
+    testTime.subtractMinutes(30)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
+  })
+})
