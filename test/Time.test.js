@@ -31,3 +31,17 @@ describe('addMinutes', () => {
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
 })
+
+describe('addHours', () => {
+  test('2 should result in 15:45', () => {
+    const testTime = new Time(13, 45)
+    testTime.addHours(2)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('15:45')
+  })
+
+  test('12 should result in 01:45', () => {
+    const testTime = new Time(13, 45)
+    testTime.addHours(12)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
+  })
+})
