@@ -6,9 +6,19 @@ describe('Get formated time', () => {
     expect(testTime.getTimeIn12HourClockFormat()).toBe('01:45pm')
   })
 
+  test('getTimeIn12HourClockFormat should return 12:00am', () => {
+    const testTime = new Time(0, 0)
+    expect(testTime.getTimeIn12HourClockFormat()).toBe('12:00am')
+  })
+
   test('getTimeIn24HourClockFormat should return 13:45', () => {
     const testTime = new Time(13, 45)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('13:45')
+  })
+
+  test('getTimeIn24HourClockFormat should return 00:00', () => {
+    const testTime = new Time(0, 0)
+    expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
 })
 
