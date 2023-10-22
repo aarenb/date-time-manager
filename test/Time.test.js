@@ -6,6 +6,18 @@ describe('setHour', () => {
     testTime.setHour(20)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('20:45')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.setHour('not a number')
+      testTime.setHour(null)
+      testTime.setHour(false)
+      testTime.setHour(undefined)
+      testTime.setHour({})
+      testTime.setHour([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('setMinute', () => {
@@ -13,6 +25,18 @@ describe('setMinute', () => {
     const testTime = new Time(13, 45)
     testTime.setMinute(20)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('13:20')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.setMinute('not a number')
+      testTime.setMinute(null)
+      testTime.setMinute(false)
+      testTime.setMinute(undefined)
+      testTime.setMinute({})
+      testTime.setMinute([])
+    }).toThrow('The passed argument is not a number.')
   })
 })
 
@@ -56,6 +80,18 @@ describe('addMinutes', () => {
     testTime.addMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.addMinutes('not a number')
+      testTime.addMinutes(null)
+      testTime.addMinutes(false)
+      testTime.addMinutes(undefined)
+      testTime.addMinutes({})
+      testTime.addMinutes([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('addHours', () => {
@@ -69,6 +105,18 @@ describe('addHours', () => {
     const testTime = new Time(13, 45)
     testTime.addHours(12)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.addHours('not a number')
+      testTime.addHours(null)
+      testTime.addHours(false)
+      testTime.addHours(undefined)
+      testTime.addHours({})
+      testTime.addHours([])
+    }).toThrow('The passed argument is not a number.')
   })
 })
 
@@ -90,6 +138,18 @@ describe('subtractMinutes', () => {
     testTime.subtractMinutes(30)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('00:00')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.subtractMinutes('not a number')
+      testTime.subtractMinutes(null)
+      testTime.subtractMinutes(false)
+      testTime.subtractMinutes(undefined)
+      testTime.subtractMinutes({})
+      testTime.subtractMinutes([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('subtractHours', () => {
@@ -104,6 +164,16 @@ describe('subtractHours', () => {
     testTime.subtractHours(12)
     expect(testTime.getTimeIn24HourClockFormat()).toBe('01:45')
   })
-})
 
-// TODO: Add tests for errors
+  test('passing an argument that is not a number should throw an error', () => {
+    const testTime = new Time(13, 45)
+    expect(() => {
+      testTime.subtractHours('not a number')
+      testTime.subtractHours(null)
+      testTime.subtractHours(false)
+      testTime.subtractHours(undefined)
+      testTime.subtractHours({})
+      testTime.subtractHours([])
+    }).toThrow('The passed argument is not a number.')
+  })
+})
