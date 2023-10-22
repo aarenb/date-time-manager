@@ -21,46 +21,6 @@ export class Time {
   }
 
   /**
-   * Sets the hour.
-   *
-   * @param {number} hour - The hour to set.
-   */
-  setHour (hour) {
-    this.#exceptionHandler.guardAgainstNotNumber(hour)
-
-    this.#hour = hour
-  }
-
-  /**
-   * Sets the minute.
-   *
-   * @param {number} minute - The minute to set.
-   */
-  setMinute (minute) {
-    this.#exceptionHandler.guardAgainstNotNumber(minute)
-
-    this.#minute = minute
-  }
-
-  /**
-   * Returns the time in 12h clock format.
-   *
-   * @returns {string} The time in 12h clock format (hh:mmxm).
-   */
-  getTimeIn12HourClockFormat () {
-    return this.#to12HourClockFormat(this.#hour, this.#minute)
-  }
-
-  /**
-   * Returns the time in 24h clock format.
-   *
-   * @returns {string} The time in 24h clock format (hh:mm).
-   */
-  getTimeIn24HourClockFormat () {
-    return this.#to24HourClockFormat(this.#hour, this.#minute)
-  }
-
-  /**
    * Add a certain amount of minutes to the time object.
    *
    * @param {number} minutes - The amount of minutes to add.
@@ -143,6 +103,37 @@ export class Time {
   }
 
   /**
+   * Sets the minute.
+   *
+   * @param {number} minute - The minute to set.
+   */
+  setMinute (minute) {
+    this.#exceptionHandler.guardAgainstNotNumber(minute)
+
+    this.#minute = minute
+  }
+
+  /**
+   * Sets the hour.
+   *
+   * @param {number} hour - The hour to set.
+   */
+  setHour (hour) {
+    this.#exceptionHandler.guardAgainstNotNumber(hour)
+
+    this.#hour = hour
+  }
+
+  /**
+   * Returns the time in 24h clock format.
+   *
+   * @returns {string} The time in 24h clock format (hh:mm).
+   */
+  getTimeIn24HourClockFormat () {
+    return this.#to24HourClockFormat(this.#hour, this.#minute)
+  }
+
+  /**
    * Formats time into the 24 hour clock.
    *
    * @param {number} hour - The time's hour.
@@ -154,6 +145,15 @@ export class Time {
     minute = this.#numberToTwoCharacterString(minute)
 
     return `${hour}:${minute}`
+  }
+
+  /**
+   * Returns the time in 12h clock format.
+   *
+   * @returns {string} The time in 12h clock format (hh:mmxm).
+   */
+  getTimeIn12HourClockFormat () {
+    return this.#to12HourClockFormat(this.#hour, this.#minute)
   }
 
   /**
