@@ -1,26 +1,62 @@
 import { Date } from '../src/Date.js'
 
 describe('setYear', () => {
-  test('2000 result in 11/07/2000', () => {
+  test('2000 should result in 11/07/2000', () => {
     const testDate = new Date(2003, 7, 11)
     testDate.setYear(2000)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2000')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.setYear('not a number')
+      testDate.setYear(null)
+      testDate.setYear(false)
+      testDate.setYear(undefined)
+      testDate.setYear({})
+      testDate.setYear([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('setMonth', () => {
-  test('11 result in 11/11/2003', () => {
+  test('11 should result in 11/11/2003', () => {
     const testDate = new Date(2003, 7, 11)
     testDate.setMonth(11)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/11/2003')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.setMonth('not a number')
+      testDate.setMonth(null)
+      testDate.setMonth(false)
+      testDate.setMonth(undefined)
+      testDate.setMonth({})
+      testDate.setMonth([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('setDay', () => {
-  test('26 result in 26/07/2003', () => {
+  test('26 should result in 26/07/2003', () => {
     const testDate = new Date(2003, 7, 11)
     testDate.setDay(26)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('26/07/2003')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.setDay('not a number')
+      testDate.setDay(null)
+      testDate.setDay(false)
+      testDate.setDay(undefined)
+      testDate.setDay({})
+      testDate.setDay([])
+    }).toThrow('The passed argument is not a number.')
   })
 })
 
@@ -59,6 +95,18 @@ describe('getFormatedDate', () => {
     const testDate = new Date(2003, 7, 11)
     expect(testDate.getFormatedDate('dd month yyyy')).toBe('11 July 2003')
   })
+
+  test('passing an argument that is not a string should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.getFormatedDate(1)
+      testDate.getFormatedDat(null)
+      testDate.getFormatedDat(false)
+      testDate.getFormatedDat(undefined)
+      testDate.getFormatedDat({})
+      testDate.getFormatedDat([])
+    }).toThrow('The passed argument is not a string.')
+  })
 })
 
 describe('addDays', () => {
@@ -91,6 +139,18 @@ describe('addDays', () => {
     testDate.addDays(18)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.addDays('not a number')
+      testDate.addDays(null)
+      testDate.addDays(false)
+      testDate.addDays(undefined)
+      testDate.addDays({})
+      testDate.addDays([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('addMonths', () => {
@@ -105,6 +165,25 @@ describe('addMonths', () => {
     testDate.addMonths(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2004')
   })
+
+  test('adding months to create a date that does not exist should throw an error', () => {
+    const testDate = new Date(2003, 7, 31)
+    expect(() => {
+      testDate.addMonths(2)
+    }).toThrow('This date does not exist')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.addMonths('not a number')
+      testDate.addMonths(null)
+      testDate.addMonths(false)
+      testDate.addMonths(undefined)
+      testDate.addMonths({})
+      testDate.addMonths([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('addYears', () => {
@@ -118,6 +197,18 @@ describe('addYears', () => {
     const testDate = new Date(2003, 7, 11)
     testDate.addYears(10)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2013')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.addYears('not a number')
+      testDate.addYears(null)
+      testDate.addYears(false)
+      testDate.addYears(undefined)
+      testDate.addYears({})
+      testDate.addYears([])
+    }).toThrow('The passed argument is not a number.')
   })
 })
 
@@ -145,6 +236,18 @@ describe('subtractDays', () => {
     testDate.subtractDays(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('29/02/2004')
   })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.subtractDays('not a number')
+      testDate.subtractDays(null)
+      testDate.subtractDays(false)
+      testDate.subtractDays(undefined)
+      testDate.subtractDays({})
+      testDate.subtractDays([])
+    }).toThrow('The passed argument is not a number.')
+  })
 })
 
 describe('subtractMonths', () => {
@@ -158,6 +261,25 @@ describe('subtractMonths', () => {
     const testDate = new Date(2003, 7, 11)
     testDate.subtractMonths(12)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/2002')
+  })
+
+  test('subtracting months to create a date that does not exist should throw an error', () => {
+    const testDate = new Date(2003, 7, 31)
+    expect(() => {
+      testDate.subtractMonths(1)
+    }).toThrow('This date does not exist')
+  })
+
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.subtractMonths('not a number')
+      testDate.subtractMonths(null)
+      testDate.subtractMonths(false)
+      testDate.subtractMonths(undefined)
+      testDate.subtractMonths({})
+      testDate.subtractMonths([])
+    }).toThrow('The passed argument is not a number.')
   })
 })
 
@@ -173,6 +295,16 @@ describe('subtractYears', () => {
     testDate.subtractYears(10)
     expect(testDate.getFormatedDate('dd/mm/yyyy')).toBe('11/07/1993')
   })
-})
 
-// TODO: Add tests for errors
+  test('passing an argument that is not a number should throw an error', () => {
+    const testDate = new Date(2003, 7, 11)
+    expect(() => {
+      testDate.subtractYears('not a number')
+      testDate.subtractYears(null)
+      testDate.subtractYears(false)
+      testDate.subtractYears(undefined)
+      testDate.subtractYears({})
+      testDate.subtractYears([])
+    }).toThrow('The passed argument is not a number.')
+  })
+})
